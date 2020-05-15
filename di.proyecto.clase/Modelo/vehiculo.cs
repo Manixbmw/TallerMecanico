@@ -23,8 +23,9 @@ namespace di.proyecto.clase.Modelo
         }
     
         public int id { get; set; }
-        [Required(ErrorMessage = "Tienes que ponel la matricula")]
+        [Required(ErrorMessage = "Es obligatorio poner la matricula")]
         public string matricula { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner la marca")]
         public string marca { get; set; }
         public string modelo { get; set; }
         public string color { get; set; }
