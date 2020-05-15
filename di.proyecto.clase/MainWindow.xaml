@@ -1,0 +1,51 @@
+﻿<Window x:Class="di.proyecto.clase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:di.proyecto.clase"
+        mc:Ignorable="d"
+        Background="DarkGray"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MECHANICS" Height="650" Width="1500"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="600*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:ColorZone Mode="Dark" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+            <Grid>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
+                    <StackPanel Width="150">
+                        <Button Content="Ajustes" x:Name="Ajustes" />
+                        <Button Content="Cuenta" x:Name="Cuenta" />
+                        <Button Content="Ayuda"  x:Name="Ayuda"/>
+                        <Separator/>
+                        <Button Content="Desconectar" x:Name="Desconectar" Click="Desconectar_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </materialDesign:ColorZone >
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#FF303030">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="326*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="GhostWhite"  >
+                <Image Source="Recursos/Logos/Logo.png"/>
+            </Grid>
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <StackPanel x:Name="Menu" Margin="10"/>
+            </ScrollViewer>
+        </Grid >
+
+        <Grid  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+            <Grid  x:Name="central"  />
+        </Grid>
+    </Grid>
+</Window>

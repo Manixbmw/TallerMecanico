@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="di.proyecto.clase.Vista.ControlesUsuario.UCVehiculoNuevo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
+             mc:Ignorable="d" 
+             Height="auto" Width="auto">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <material:Card  Background="{DynamicResource MaterialDesignPaper}"  Padding="10" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Vehiculo Nuevo" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
+                <StackPanel Grid.Column="1" Margin="0,0,0,50">
+                    <Button    HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                               x:Name="btnGuardarVehiculo" Click="BtnGuardarVehiculo_Click"
+                          Width="50" material:RippleAssist.IsCentered="True" Height="50">
+                        <material:PackIcon Kind="ContentSave" Width="50" Height="50"
+                         Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+        </material:Card>
+
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1" MaxLength="20"
+                  Text="{Binding vehiculoNuevo.matricula,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
+                  x:Name="txtMatricula" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"
+                  material:HintAssist.Hint="Matricula" Margin="20" 
+                  material:HintAssist.HelperText="000-00-0000"
+         />
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1" Grid.Column="1" MaxLength="20"
+                  Text="{Binding vehiculoNuevo.marca, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                  x:Name="txtMarca" Foreground="{DynamicResource MaterialDesignPaper}"
+                  material:HintAssist.Hint="Marca" Margin="20" FontSize="20"
+         />
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="2" Grid.Column="0" MaxLength="20"
+                  Text="{Binding vehiculoNuevo.modelo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                  x:Name="txtModelo" Foreground="{DynamicResource MaterialDesignPaper}"
+                  material:HintAssist.Hint="Modelo" Margin="20" FontSize="20"
+         />
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="2" Grid.Column="1" MaxLength="20"
+                  Text="{Binding vehiculoNuevo.color}"
+                  x:Name="txtColor" Foreground="{DynamicResource MaterialDesignPaper}"
+                  material:HintAssist.Hint="Color" Margin="20" FontSize="20"
+         />
+        <DatePicker  Grid.Row="3" x:Name="dateFechaMatri" Foreground="{DynamicResource MaterialDesignPaper}"
+                 material:HintAssist.Hint="Fecha de Matriculacion" Margin="20,45,20,20" FontSize="20"  />
+
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="3" Grid.Column="1" MaxLength="20"
+                  x:Name="txtKm" Foreground="{DynamicResource MaterialDesignPaper}"
+                  material:HintAssist.Hint="Kilometros" Margin="20" FontSize="20"
+         />
+
+    </Grid>
+</UserControl>

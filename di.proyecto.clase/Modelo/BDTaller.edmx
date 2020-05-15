@@ -1,0 +1,1254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tallerModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="albaran">
+          <Key>
+            <PropertyRef Name="idProducto" />
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idPedidos" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="averia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" />
+          <Property Name="horas" Type="float" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="solucion" Type="varchar" MaxLength="45" />
+          <Property Name="fechaRecepcion" Type="date" />
+          <Property Name="fechaSolucion" Type="date" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="45" />
+          <Property Name="IVA" Type="float" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="dni" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="45" />
+          <Property Name="calle" Type="varchar" MaxLength="45" />
+          <Property Name="poblacion" Type="varchar" MaxLength="45" />
+          <Property Name="CP" Type="int" />
+          <Property Name="provincia" Type="varchar" MaxLength="45" />
+          <Property Name="idVehiculo" Type="int" />
+        </EntityType>
+        <EntityType Name="detalles_ticket">
+          <Key>
+            <PropertyRef Name="idProducto" />
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idTicket" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="IVA" Type="float" />
+          <Property Name="precioTotal" Type="float" />
+        </EntityType>
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="rol" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="dni" Type="varchar" MaxLength="45" />
+          <Property Name="telefono" Type="varchar" MaxLength="45" />
+          <Property Name="calle" Type="varchar" MaxLength="45" />
+          <Property Name="poblacion" Type="varchar" MaxLength="45" />
+          <Property Name="CP" Type="int" />
+          <Property Name="provincia" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="precio" Type="float" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="idAveria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="fechaEntrada" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="piezas_averia">
+          <Key>
+            <PropertyRef Name="idAveria" />
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idAveria" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="IVA" Type="float" />
+          <Property Name="precioTotal" Type="float" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="precio" Type="float" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="int" />
+          <Property Name="idProveedor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cpostal" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol_has_permisos">
+          <Key>
+            <PropertyRef Name="rol_id" />
+            <PropertyRef Name="Permisos_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" Nullable="false" />
+          <Property Name="Permisos_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ticket_venta">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="FechaVenta" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tipoaveria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tipoproducto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="vehiculo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="matricula" Type="varchar" MaxLength="20" />
+          <Property Name="marca" Type="varchar" MaxLength="45" />
+          <Property Name="modelo" Type="varchar" MaxLength="45" />
+          <Property Name="color" Type="varchar" MaxLength="20" />
+          <Property Name="FechaMatriculacion" Type="date" />
+          <Property Name="Km" Type="int" />
+        </EntityType>
+        <Association Name="Averia_fk0">
+          <End Role="tipoaveria" Type="Self.tipoaveria" Multiplicity="1" />
+          <End Role="averia" Type="Self.averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoaveria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk1">
+          <End Role="estado" Type="Self.estado" Multiplicity="1" />
+          <End Role="averia" Type="Self.averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk2">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="averia" Type="Self.averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk3">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="averia" Type="Self.averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cobro_fk0">
+          <End Role="averia" Type="Self.averia" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="averia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="idAveria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Empleado_fk0">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_averia_has_productos_averia1">
+          <End Role="averia" Type="Self.averia" Multiplicity="1" />
+          <End Role="piezas_averia" Type="Self.piezas_averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="averia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="piezas_averia">
+              <PropertyRef Name="idAveria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_averia_has_productos_productos1">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="piezas_averia" Type="Self.piezas_averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="piezas_averia">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_Vehiculo1">
+          <End Role="vehiculo" Type="Self.vehiculo" Multiplicity="0..1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehiculo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalles_Ticket_productos1">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="detalles_ticket" Type="Self.detalles_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="detalles_ticket">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalles_Ticket_ticket_Venta1">
+          <End Role="ticket_venta" Type="Self.ticket_venta" Multiplicity="1" />
+          <End Role="detalles_ticket" Type="Self.detalles_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket_venta">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="detalles_ticket">
+              <PropertyRef Name="idTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productos_has_pedidos_pedidos1">
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="1" />
+          <End Role="albaran" Type="Self.albaran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="albaran">
+              <PropertyRef Name="idPedidos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productos_has_pedidos_productos1">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="albaran" Type="Self.albaran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="albaran">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productos_proveedor1">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rol_has_Permisos_Permisos1">
+          <End Role="permisos" Type="Self.permisos" Multiplicity="1" />
+          <End Role="rol_has_permisos" Type="Self.rol_has_permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_has_permisos">
+              <PropertyRef Name="Permisos_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rol_has_Permisos_rol1">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="rol_has_permisos" Type="Self.rol_has_permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_has_permisos">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ticket_Venta_cliente1">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="ticket_venta" Type="Self.ticket_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket_venta">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipoproducto">
+          <End Role="tipoproducto" Type="Self.tipoproducto" Multiplicity="0..1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoproducto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tallerModelStoreContainer">
+          <EntitySet Name="albaran" EntityType="Self.albaran" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="averia" EntityType="Self.averia" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="detalles_ticket" EntityType="Self.detalles_ticket" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="empleado" EntityType="Self.empleado" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="factura" EntityType="Self.factura" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="pedidos" EntityType="Self.pedidos" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="permisos" EntityType="Self.permisos" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="piezas_averia" EntityType="Self.piezas_averia" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="rol_has_permisos" EntityType="Self.rol_has_permisos" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="ticket_venta" EntityType="Self.ticket_venta" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="tipoaveria" EntityType="Self.tipoaveria" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="tipoproducto" EntityType="Self.tipoproducto" Schema="taller" store:Type="Tables" />
+          <EntitySet Name="vehiculo" EntityType="Self.vehiculo" Schema="taller" store:Type="Tables" />
+          <AssociationSet Name="Averia_fk0" Association="Self.Averia_fk0">
+            <End Role="tipoaveria" EntitySet="tipoaveria" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk1" Association="Self.Averia_fk1">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk2" Association="Self.Averia_fk2">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk3" Association="Self.Averia_fk3">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Cobro_fk0" Association="Self.Cobro_fk0">
+            <End Role="averia" EntitySet="averia" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="Empleado_fk0" Association="Self.Empleado_fk0">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_averia_has_productos_averia1" Association="Self.fk_averia_has_productos_averia1">
+            <End Role="averia" EntitySet="averia" />
+            <End Role="piezas_averia" EntitySet="piezas_averia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_averia_has_productos_productos1" Association="Self.fk_averia_has_productos_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="piezas_averia" EntitySet="piezas_averia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_Vehiculo1" Association="Self.fk_cliente_Vehiculo1">
+            <End Role="vehiculo" EntitySet="vehiculo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalles_Ticket_productos1" Association="Self.fk_detalles_Ticket_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalles_ticket" EntitySet="detalles_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalles_Ticket_ticket_Venta1" Association="Self.fk_detalles_Ticket_ticket_Venta1">
+            <End Role="ticket_venta" EntitySet="ticket_venta" />
+            <End Role="detalles_ticket" EntitySet="detalles_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productos_has_pedidos_pedidos1" Association="Self.fk_productos_has_pedidos_pedidos1">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="albaran" EntitySet="albaran" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productos_has_pedidos_productos1" Association="Self.fk_productos_has_pedidos_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="albaran" EntitySet="albaran" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productos_proveedor1" Association="Self.fk_productos_proveedor1">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rol_has_Permisos_Permisos1" Association="Self.fk_rol_has_Permisos_Permisos1">
+            <End Role="permisos" EntitySet="permisos" />
+            <End Role="rol_has_permisos" EntitySet="rol_has_permisos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rol_has_Permisos_rol1" Association="Self.fk_rol_has_Permisos_rol1">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_has_permisos" EntitySet="rol_has_permisos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ticket_Venta_cliente1" Association="Self.fk_ticket_Venta_cliente1">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ticket_venta" EntitySet="ticket_venta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipoproducto" Association="Self.fk_tipoproducto">
+            <End Role="tipoproducto" EntitySet="tipoproducto" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tallerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="tallerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="albaran" EntityType="tallerModel.albaran" />
+          <EntitySet Name="averia" EntityType="tallerModel.averia" />
+          <EntitySet Name="cliente" EntityType="tallerModel.cliente" />
+          <EntitySet Name="detalles_ticket" EntityType="tallerModel.detalles_ticket" />
+          <EntitySet Name="empleado" EntityType="tallerModel.empleado" />
+          <EntitySet Name="estado" EntityType="tallerModel.estado" />
+          <EntitySet Name="factura" EntityType="tallerModel.factura" />
+          <EntitySet Name="pedidos" EntityType="tallerModel.pedidos" />
+          <EntitySet Name="permisos" EntityType="tallerModel.permisos" />
+          <EntitySet Name="piezas_averia" EntityType="tallerModel.piezas_averia" />
+          <EntitySet Name="productos" EntityType="tallerModel.productos" />
+          <EntitySet Name="proveedor" EntityType="tallerModel.proveedor" />
+          <EntitySet Name="rol" EntityType="tallerModel.rol" />
+          <EntitySet Name="ticket_venta" EntityType="tallerModel.ticket_venta" />
+          <EntitySet Name="tipoaveria" EntityType="tallerModel.tipoaveria" />
+          <EntitySet Name="tipoproducto" EntityType="tallerModel.tipoproducto" />
+          <EntitySet Name="vehiculo" EntityType="tallerModel.vehiculo" />
+          <AssociationSet Name="fk_productos_has_pedidos_pedidos1" Association="tallerModel.fk_productos_has_pedidos_pedidos1">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="albaran" EntitySet="albaran" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productos_has_pedidos_productos1" Association="tallerModel.fk_productos_has_pedidos_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="albaran" EntitySet="albaran" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk0" Association="tallerModel.Averia_fk0">
+            <End Role="tipoaveria" EntitySet="tipoaveria" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk1" Association="tallerModel.Averia_fk1">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk2" Association="tallerModel.Averia_fk2">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Averia_fk3" Association="tallerModel.Averia_fk3">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="averia" EntitySet="averia" />
+          </AssociationSet>
+          <AssociationSet Name="Cobro_fk0" Association="tallerModel.Cobro_fk0">
+            <End Role="averia" EntitySet="averia" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_averia_has_productos_averia1" Association="tallerModel.fk_averia_has_productos_averia1">
+            <End Role="averia" EntitySet="averia" />
+            <End Role="piezas_averia" EntitySet="piezas_averia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_Vehiculo1" Association="tallerModel.fk_cliente_Vehiculo1">
+            <End Role="vehiculo" EntitySet="vehiculo" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ticket_Venta_cliente1" Association="tallerModel.fk_ticket_Venta_cliente1">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ticket_venta" EntitySet="ticket_venta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalles_Ticket_productos1" Association="tallerModel.fk_detalles_Ticket_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalles_ticket" EntitySet="detalles_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalles_Ticket_ticket_Venta1" Association="tallerModel.fk_detalles_Ticket_ticket_Venta1">
+            <End Role="ticket_venta" EntitySet="ticket_venta" />
+            <End Role="detalles_ticket" EntitySet="detalles_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="Empleado_fk0" Association="tallerModel.Empleado_fk0">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_averia_has_productos_productos1" Association="tallerModel.fk_averia_has_productos_productos1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="piezas_averia" EntitySet="piezas_averia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productos_proveedor1" Association="tallerModel.fk_productos_proveedor1">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipoproducto" Association="tallerModel.fk_tipoproducto">
+            <End Role="tipoproducto" EntitySet="tipoproducto" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="rol_has_permisos" Association="tallerModel.rol_has_permisos">
+            <End Role="permisos" EntitySet="permisos" />
+            <End Role="rol" EntitySet="rol" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="albaran">
+          <Key>
+            <PropertyRef Name="idProducto" />
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idPedidos" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="pedidos" Relationship="tallerModel.fk_productos_has_pedidos_pedidos1" FromRole="albaran" ToRole="pedidos" />
+          <NavigationProperty Name="productos" Relationship="tallerModel.fk_productos_has_pedidos_productos1" FromRole="albaran" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="averia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="horas" Type="Single" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="solucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRecepcion" Type="DateTime" />
+          <Property Name="fechaSolucion" Type="DateTime" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IVA" Type="Single" />
+          <NavigationProperty Name="tipoaveria" Relationship="tallerModel.Averia_fk0" FromRole="averia" ToRole="tipoaveria" />
+          <NavigationProperty Name="estado1" Relationship="tallerModel.Averia_fk1" FromRole="averia" ToRole="estado" />
+          <NavigationProperty Name="empleado" Relationship="tallerModel.Averia_fk2" FromRole="averia" ToRole="empleado" />
+          <NavigationProperty Name="cliente" Relationship="tallerModel.Averia_fk3" FromRole="averia" ToRole="cliente" />
+          <NavigationProperty Name="factura" Relationship="tallerModel.Cobro_fk0" FromRole="averia" ToRole="factura" />
+          <NavigationProperty Name="piezas_averia" Relationship="tallerModel.fk_averia_has_productos_averia1" FromRole="averia" ToRole="piezas_averia" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="calle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="poblacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="Int32" />
+          <Property Name="provincia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idVehiculo" Type="Int32" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.Averia_fk3" FromRole="cliente" ToRole="averia" />
+          <NavigationProperty Name="vehiculo" Relationship="tallerModel.fk_cliente_Vehiculo1" FromRole="cliente" ToRole="vehiculo" />
+          <NavigationProperty Name="ticket_venta" Relationship="tallerModel.fk_ticket_Venta_cliente1" FromRole="cliente" ToRole="ticket_venta" />
+        </EntityType>
+        <EntityType Name="detalles_ticket">
+          <Key>
+            <PropertyRef Name="idProducto" />
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idTicket" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="IVA" Type="Single" />
+          <Property Name="precioTotal" Type="Single" />
+          <NavigationProperty Name="productos" Relationship="tallerModel.fk_detalles_Ticket_productos1" FromRole="detalles_ticket" ToRole="productos" />
+          <NavigationProperty Name="ticket_venta" Relationship="tallerModel.fk_detalles_Ticket_ticket_Venta1" FromRole="detalles_ticket" ToRole="ticket_venta" />
+        </EntityType>
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="calle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="poblacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="Int32" />
+          <Property Name="provincia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.Averia_fk2" FromRole="empleado" ToRole="averia" />
+          <NavigationProperty Name="rol1" Relationship="tallerModel.Empleado_fk0" FromRole="empleado" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.Averia_fk1" FromRole="estado" ToRole="averia" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="precio" Type="Single" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="idAveria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.Cobro_fk0" FromRole="factura" ToRole="averia" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="fechaEntrada" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="albaran" Relationship="tallerModel.fk_productos_has_pedidos_pedidos1" FromRole="pedidos" ToRole="albaran" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rol" Relationship="tallerModel.rol_has_permisos" FromRole="permisos" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="piezas_averia">
+          <Key>
+            <PropertyRef Name="idAveria" />
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idAveria" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="IVA" Type="Single" />
+          <Property Name="precioTotal" Type="Single" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.fk_averia_has_productos_averia1" FromRole="piezas_averia" ToRole="averia" />
+          <NavigationProperty Name="productos" Relationship="tallerModel.fk_averia_has_productos_productos1" FromRole="piezas_averia" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Single" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="Int32" />
+          <Property Name="idProveedor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="albaran" Relationship="tallerModel.fk_productos_has_pedidos_productos1" FromRole="productos" ToRole="albaran" />
+          <NavigationProperty Name="detalles_ticket" Relationship="tallerModel.fk_detalles_Ticket_productos1" FromRole="productos" ToRole="detalles_ticket" />
+          <NavigationProperty Name="piezas_averia" Relationship="tallerModel.fk_averia_has_productos_productos1" FromRole="productos" ToRole="piezas_averia" />
+          <NavigationProperty Name="proveedor" Relationship="tallerModel.fk_productos_proveedor1" FromRole="productos" ToRole="proveedor" />
+          <NavigationProperty Name="tipoproducto" Relationship="tallerModel.fk_tipoproducto" FromRole="productos" ToRole="tipoproducto" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cpostal" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productos" Relationship="tallerModel.fk_productos_proveedor1" FromRole="proveedor" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="empleado" Relationship="tallerModel.Empleado_fk0" FromRole="rol" ToRole="empleado" />
+          <NavigationProperty Name="permisos" Relationship="tallerModel.rol_has_permisos" FromRole="rol" ToRole="permisos" />
+        </EntityType>
+        <EntityType Name="ticket_venta">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="FechaVenta" Type="DateTime" />
+          <NavigationProperty Name="cliente" Relationship="tallerModel.fk_ticket_Venta_cliente1" FromRole="ticket_venta" ToRole="cliente" />
+          <NavigationProperty Name="detalles_ticket" Relationship="tallerModel.fk_detalles_Ticket_ticket_Venta1" FromRole="ticket_venta" ToRole="detalles_ticket" />
+        </EntityType>
+        <EntityType Name="tipoaveria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="averia" Relationship="tallerModel.Averia_fk0" FromRole="tipoaveria" ToRole="averia" />
+        </EntityType>
+        <EntityType Name="tipoproducto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productos" Relationship="tallerModel.fk_tipoproducto" FromRole="tipoproducto" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="vehiculo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMatriculacion" Type="DateTime" />
+          <Property Name="Km" Type="Int32" />
+          <NavigationProperty Name="cliente" Relationship="tallerModel.fk_cliente_Vehiculo1" FromRole="vehiculo" ToRole="cliente" />
+        </EntityType>
+        <Association Name="fk_productos_has_pedidos_pedidos1">
+          <End Type="tallerModel.pedidos" Role="pedidos" Multiplicity="1" />
+          <End Type="tallerModel.albaran" Role="albaran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="albaran">
+              <PropertyRef Name="idPedidos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productos_has_pedidos_productos1">
+          <End Type="tallerModel.productos" Role="productos" Multiplicity="1" />
+          <End Type="tallerModel.albaran" Role="albaran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="albaran">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk0">
+          <End Type="tallerModel.tipoaveria" Role="tipoaveria" Multiplicity="1" />
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoaveria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk1">
+          <End Type="tallerModel.estado" Role="estado" Multiplicity="1" />
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk2">
+          <End Type="tallerModel.empleado" Role="empleado" Multiplicity="1" />
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Averia_fk3">
+          <End Type="tallerModel.cliente" Role="cliente" Multiplicity="1" />
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="averia">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cobro_fk0">
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="1" />
+          <End Type="tallerModel.factura" Role="factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="averia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="idAveria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_averia_has_productos_averia1">
+          <End Type="tallerModel.averia" Role="averia" Multiplicity="1" />
+          <End Type="tallerModel.piezas_averia" Role="piezas_averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="averia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="piezas_averia">
+              <PropertyRef Name="idAveria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_Vehiculo1">
+          <End Type="tallerModel.vehiculo" Role="vehiculo" Multiplicity="0..1" />
+          <End Type="tallerModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehiculo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ticket_Venta_cliente1">
+          <End Type="tallerModel.cliente" Role="cliente" Multiplicity="1" />
+          <End Type="tallerModel.ticket_venta" Role="ticket_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket_venta">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalles_Ticket_productos1">
+          <End Type="tallerModel.productos" Role="productos" Multiplicity="1" />
+          <End Type="tallerModel.detalles_ticket" Role="detalles_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="detalles_ticket">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalles_Ticket_ticket_Venta1">
+          <End Type="tallerModel.ticket_venta" Role="ticket_venta" Multiplicity="1" />
+          <End Type="tallerModel.detalles_ticket" Role="detalles_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket_venta">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="detalles_ticket">
+              <PropertyRef Name="idTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Empleado_fk0">
+          <End Type="tallerModel.rol" Role="rol" Multiplicity="1" />
+          <End Type="tallerModel.empleado" Role="empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_averia_has_productos_productos1">
+          <End Type="tallerModel.productos" Role="productos" Multiplicity="1" />
+          <End Type="tallerModel.piezas_averia" Role="piezas_averia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="piezas_averia">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productos_proveedor1">
+          <End Type="tallerModel.proveedor" Role="proveedor" Multiplicity="1" />
+          <End Type="tallerModel.productos" Role="productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipoproducto">
+          <End Type="tallerModel.tipoproducto" Role="tipoproducto" Multiplicity="0..1" />
+          <End Type="tallerModel.productos" Role="productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoproducto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rol_has_permisos">
+          <End Type="tallerModel.permisos" Role="permisos" Multiplicity="*" />
+          <End Type="tallerModel.rol" Role="rol" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tallerModelStoreContainer" CdmEntityContainer="tallerEntities">
+          <EntitySetMapping Name="albaran">
+            <EntityTypeMapping TypeName="tallerModel.albaran">
+              <MappingFragment StoreEntitySet="albaran">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="averia">
+            <EntityTypeMapping TypeName="tallerModel.averia">
+              <MappingFragment StoreEntitySet="averia">
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="fechaSolucion" ColumnName="fechaSolucion" />
+                <ScalarProperty Name="fechaRecepcion" ColumnName="fechaRecepcion" />
+                <ScalarProperty Name="solucion" ColumnName="solucion" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="horas" ColumnName="horas" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="tallerModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="poblacion" ColumnName="poblacion" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalles_ticket">
+            <EntityTypeMapping TypeName="tallerModel.detalles_ticket">
+              <MappingFragment StoreEntitySet="detalles_ticket">
+                <ScalarProperty Name="precioTotal" ColumnName="precioTotal" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleado">
+            <EntityTypeMapping TypeName="tallerModel.empleado">
+              <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="poblacion" ColumnName="poblacion" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado">
+            <EntityTypeMapping TypeName="tallerModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="factura">
+            <EntityTypeMapping TypeName="tallerModel.factura">
+              <MappingFragment StoreEntitySet="factura">
+                <ScalarProperty Name="idAveria" ColumnName="idAveria" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos">
+            <EntityTypeMapping TypeName="tallerModel.pedidos">
+              <MappingFragment StoreEntitySet="pedidos">
+                <ScalarProperty Name="fechaEntrada" ColumnName="fechaEntrada" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permisos">
+            <EntityTypeMapping TypeName="tallerModel.permisos">
+              <MappingFragment StoreEntitySet="permisos">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="piezas_averia">
+            <EntityTypeMapping TypeName="tallerModel.piezas_averia">
+              <MappingFragment StoreEntitySet="piezas_averia">
+                <ScalarProperty Name="precioTotal" ColumnName="precioTotal" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idAveria" ColumnName="idAveria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="tallerModel.productos">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedor">
+            <EntityTypeMapping TypeName="tallerModel.proveedor">
+              <MappingFragment StoreEntitySet="proveedor">
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="cpostal" ColumnName="cpostal" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="tallerModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ticket_venta">
+            <EntityTypeMapping TypeName="tallerModel.ticket_venta">
+              <MappingFragment StoreEntitySet="ticket_venta">
+                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoaveria">
+            <EntityTypeMapping TypeName="tallerModel.tipoaveria">
+              <MappingFragment StoreEntitySet="tipoaveria">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoproducto">
+            <EntityTypeMapping TypeName="tallerModel.tipoproducto">
+              <MappingFragment StoreEntitySet="tipoproducto">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehiculo">
+            <EntityTypeMapping TypeName="tallerModel.vehiculo">
+              <MappingFragment StoreEntitySet="vehiculo">
+                <ScalarProperty Name="Km" ColumnName="Km" />
+                <ScalarProperty Name="FechaMatriculacion" ColumnName="FechaMatriculacion" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="rol_has_permisos" TypeName="tallerModel.rol_has_permisos" StoreEntitySet="rol_has_permisos">
+            <EndProperty Name="rol">
+              <ScalarProperty Name="id" ColumnName="rol_id" />
+            </EndProperty>
+            <EndProperty Name="permisos">
+              <ScalarProperty Name="id" ColumnName="Permisos_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="di.proyecto.clase.Vista.ControlesUsuario.UCListaVehiculos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="LISTA DE VEHICULOS" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
+
+        </Grid>
+        <Grid >
+
+            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaVehiculos}">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Id" Binding="{Binding id}"  />
+                    <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
+                    <DataGridTextColumn Header="Marca" Binding="{Binding marca}"  />
+                    <DataGridTextColumn Header="Modelo" Binding="{Binding modelo}"  />
+                    <DataGridTextColumn Header="Color" Binding="{Binding color}"  />
+                    <DataGridTextColumn Header="Fecha de Matriculacion" Binding="{Binding FechaMatriculacion}"  />
+                    <DataGridTextColumn Header="Kilometros" Binding="{Binding Km}"  />
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

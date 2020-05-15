@@ -1,0 +1,180 @@
+﻿<UserControl x:Class="di.proyecto.clase.Vista.ControlesUsuario.UCArbolAverias"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:ent="clr-namespace:di.proyecto.clase.Modelo" 
+             xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
+             mc:Ignorable="d" 
+             Height="auto" Width="auto">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Background="#222">
+            <TextBlock Text="GESTIÓN DE AVERIAS" Margin="20" FontSize="20" Foreground="White" FontWeight="Bold"></TextBlock>
+        </Grid>
+        <Grid DockPanel.Dock="Left" Width="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <TextBlock Text="Arbol Estados de Averias" FontSize="16" Margin="10"/>
+            <TreeView Grid.Row="1" x:Name="treeAverias" ItemsSource="{Binding listaEstado}" SelectedItemChanged="TreeAverias_SelectedItemChanged">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type ent:estado}" ItemsSource="{Binding averia}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nombre}" Margin="5,0,0,0"/>
+                            <TextBlock Text=" ("/>
+                            <TextBlock Text="{Binding averia.Count }"/>
+                            <TextBlock Text=")"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type ent:averia}" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding cliente.nombre}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding cliente.apellido1}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+                </TreeView.Resources>
+            </TreeView>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <material:Card  Background="{DynamicResource MaterialDesignPaper}"  Padding="10" Grid.ColumnSpan="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="500"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock  Grid.Column="0" Grid.Row="0" Text="Averia Nueva" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
+                    <StackPanel Grid.Column="2" Margin="0,0,0,50">
+                        <Button    HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                          Width="50" material:RippleAssist.IsCentered="True" Height="50">
+                            <material:PackIcon Kind="ContentSave" Width="50" Height="50"
+                                           Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+            </material:Card>
+            <ComboBox x:Name="comboCliente"    ItemsSource="{Binding listaCliente}" 
+                       SelectedItem="{Binding averiaNueva.cliente ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                  FontSize="20" SelectionChanged="ComboCliente_SelectionChanged"
+                   material:HintAssist.Hint="Cliente" Grid.Row="1" Grid.Column="1" Margin="20" Background="Transparent">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                         <Run Text="{Binding nombre}" />
+                         <Run Text="{Binding apellido1}" />
+                         <Run Text="{Binding apellido2}" />
+                        </TextBlock>
+
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox x:Name="comboEmpleado" DisplayMemberPath="usuario" material:HintAssist.Hint=" Usuario del Empleaddo" 
+                      SelectedItem="{Binding averiaNueva.empleado,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged }"
+                      Grid.Row="1" Grid.Column="0"  FontSize="20"
+                  Margin="20" ItemsSource="{Binding listaEmpleado}" IsTextSearchEnabled="True" IsEditable="True" />
+
+            <ComboBox x:Name="comboTipoAveria" DisplayMemberPath="nombre" material:HintAssist.Hint="Tipo de Averia"
+                      SelectedItem="{Binding averiaNueva.tipoaveria ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Row="2" Grid.Column="0"  FontSize="20"
+                  Margin="20" ItemsSource="{Binding listaTipo}" IsTextSearchEnabled="True" IsEditable="True" />
+
+            <ComboBox x:Name="comboEstado" DisplayMemberPath="nombre" material:HintAssist.Hint="Estado de la Averia"
+                      SelectedItem="{Binding averiaNueva.estado1 ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Row="2" Grid.Column="1"  FontSize="20"
+                  Margin="20" ItemsSource="{Binding listaEstado}" IsTextSearchEnabled="True" IsEditable="True" />
+
+            <DatePicker  Grid.Row="3" x:Name="dateFechaMatri" Foreground="{DynamicResource MaterialDesignPaper}"
+                        SelectedDate="{Binding averiaNueva.fechaRecepcion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
+                 material:HintAssist.Hint="Fecha de entrada" Margin="20" FontSize="20"  />
+
+            <DatePicker   Grid.Column="1" Grid.Row="3" x:Name="dateFechaSoluci" Foreground="{DynamicResource MaterialDesignPaper}"
+                        SelectedDate="{Binding averiaNueva.fechaSolucion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
+                 material:HintAssist.Hint="Fecha de Solucion" Margin="20" FontSize="20"  />
+
+            <StackPanel Grid.Row="4"  Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="5"  Grid.Column="2" MaxLength="2"
+					  Text="{Binding averiaNueva.IVA, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+				  PreviewTextInput="NumberValidationTextBox"
+				  x:Name="txtIVA" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"
+				  material:HintAssist.Hint="%IVA" Margin="20" />
+
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="5"  Grid.Column="2" MaxLength="3"
+					  Text="{Binding averiaNueva.horas, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+				  PreviewTextInput="NumberValidationTextBox"
+				  x:Name="txtHoras" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"
+				  material:HintAssist.Hint="Horas" Margin="20" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="4"  Grid.Column="0"  Margin="10"  >
+                <TextBox            
+                    Text="{Binding averiaNueva.observaciones ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="15"                
+                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                    VerticalAlignment="Top"  Height="100"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    material:HintAssist.Hint="Observaciones"
+                    x:Name="txtObservaciones"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtObservaciones_TextChanged" />
+            </StackPanel>
+            <StackPanel Grid.Row="4"  Grid.Column="1"  Margin="10"  >
+                <TextBox            
+                    Text="{Binding averiaNueva.solucion ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="15"                
+                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                    VerticalAlignment="Top"  Height="100"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    material:HintAssist.Hint="Solucion"
+                    x:Name="txtSolucion"
+                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtObservaciones_TextChanged" />
+            </StackPanel>
+            <StackPanel Grid.Row="1"  Grid.Column="2" Grid.RowSpan="3" Margin="10"  >
+                <TextBox        
+                    Text="{Binding averiaNueva.descripcion ,  ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="15"                
+                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                    VerticalAlignment="Top"  Height="228"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    material:HintAssist.Hint="Descripcion de la averia"
+                    x:Name="txtDescrip"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtDescrip_TextChanged" />
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</UserControl>
