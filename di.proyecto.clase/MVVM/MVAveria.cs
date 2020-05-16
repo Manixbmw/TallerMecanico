@@ -10,7 +10,7 @@ using System.Windows.Data;
 
 namespace di.proyecto.clase.MVVM
 {
-    class MVAveria : MVBase
+    public class MVAveria : MVBase
     {
         private tallerEntities tallerEnt;
         private AveriaServicio aveServ;

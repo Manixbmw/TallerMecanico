@@ -27,6 +27,7 @@ namespace di.proyecto.clase.Modelo
         public string matricula { get; set; }
         [Required(ErrorMessage = "Es obligatorio poner la marca")]
         public string marca { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el modelo")]
         public string modelo { get; set; }
         public string color { get; set; }
         public Nullable<System.DateTime> FechaMatriculacion { get; set; }

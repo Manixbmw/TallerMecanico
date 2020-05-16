@@ -9,10 +9,12 @@
 
 namespace di.proyecto.clase.Modelo
 {
+    using di.proyecto.clase.MVVM;
     using System;
     using System.Collections.Generic;
-    
-    public partial class cliente
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class cliente : MVBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cliente()
@@ -22,20 +24,28 @@ namespace di.proyecto.clase.Modelo
         }
     
         public int id { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el nombre")]
         public string nombre { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el apellido")]
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Email")]
         public string email { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el DNI")]
         public string dni { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner un tlf. de contacto")]
         public string telefono { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner la calle")]
         public string calle { get; set; }
         public string poblacion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Codigo Postal")]
         public Nullable<int> CP { get; set; }
         public string provincia { get; set; }
         public Nullable<int> idVehiculo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<averia> averia { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner un vehiculo ")]
         public virtual vehiculo vehiculo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ticket_venta> ticket_venta { get; set; }

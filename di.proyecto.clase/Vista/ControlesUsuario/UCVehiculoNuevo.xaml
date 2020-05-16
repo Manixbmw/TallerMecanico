@@ -45,7 +45,7 @@
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1" MaxLength="20"
                   Text="{Binding vehiculoNuevo.matricula,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
-                  x:Name="txtMatricula" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"
+                  x:Name="txtMatricula" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"  PreviewTextInput="NumberValidationTextBox"
                   material:HintAssist.Hint="Matricula" Margin="20" 
                   material:HintAssist.HelperText="000-00-0000"
          />

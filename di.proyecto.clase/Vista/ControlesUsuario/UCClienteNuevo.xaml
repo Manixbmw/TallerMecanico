@@ -80,7 +80,7 @@
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="3" Grid.Column="1" MaxLength="20"
                    Text="{Binding clienteNuevo.telefono,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtTfn" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtTfn" Foreground="{DynamicResource MaterialDesignPaper}"  PreviewTextInput="NumberValidationTextBox"
                   material:HintAssist.Hint="Telefono" Margin="20" FontSize="20"
          />
         <TextBlock Text="Direccion" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource MaterialDesignPaper}"
@@ -102,7 +102,7 @@
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="7" Grid.Column="0" MaxLength="20"
                   x:Name="txtCP" Foreground="{DynamicResource MaterialDesignPaper}"
-                  Text="{Binding clienteNuevo.CP}"
+                  Text="{Binding clienteNuevo.CP}"  PreviewTextInput="NumberValidationTextBox"
                   material:HintAssist.Hint="CP" Margin="20" FontSize="20"
                   material:HintAssist.HelperText="00000"
          />
