@@ -9,12 +9,10 @@
 
 namespace di.proyecto.clase.Modelo
 {
-    using di.proyecto.clase.MVVM;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class vehiculo : MVBase
+    
+    public partial class vehiculo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public vehiculo()
@@ -23,11 +21,8 @@ namespace di.proyecto.clase.Modelo
         }
     
         public int id { get; set; }
-        [Required(ErrorMessage = "Es obligatorio poner la matricula")]
         public string matricula { get; set; }
-        [Required(ErrorMessage = "Es obligatorio poner la marca")]
         public string marca { get; set; }
-        [Required(ErrorMessage = "Es obligatorio poner el modelo")]
         public string modelo { get; set; }
         public string color { get; set; }
         public Nullable<System.DateTime> FechaMatriculacion { get; set; }

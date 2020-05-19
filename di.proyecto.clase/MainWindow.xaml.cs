@@ -50,7 +50,7 @@ namespace di.proyecto.clase
 
             var menuGestion = new List<SubItem>();
             var item2 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
-            menuGestion.Add(new SubItem("Nuevo Pedido"));
+            menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaAlbaranes(ent)));
             menuGestion.Add(new SubItem("Productos"));
             menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
 

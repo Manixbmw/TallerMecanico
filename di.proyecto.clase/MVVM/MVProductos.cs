@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace di.proyecto.clase.MVVM
 {
-    class MVProductos : MVBase
+   public class MVProductos : MVBase
     {
         private tallerEntities tallerEnt;
         private ProductoServicio prodServ;
