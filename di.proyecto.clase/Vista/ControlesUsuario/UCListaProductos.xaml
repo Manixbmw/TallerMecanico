@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="di.proyecto.clase.Vista.ControlesUsuario.UCListaProductos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="LISTA DE PRODUCTOS" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
+
+        </Grid>
+        <Grid Background="#FF895D5D" >
+
+            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False"   CanUserAddRows="False" ItemsSource="{Binding listaProductos}"  AlternatingRowBackground="#FF494949"
+                      GridLinesVisibility="All" HorizontalGridLinesBrush="Gray" VerticalGridLinesBrush="Gray" Background="#FF522B2B" >
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}"  />
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" />
+                    <DataGridTextColumn Header="Precio" Binding="{Binding precio}" />
+                    <DataGridTextColumn Header="Tipo" Binding="{Binding tipoproducto.nombre}" />
+                    <DataGridTextColumn Header="Proveedor" Binding="{Binding proveedor.nombre}" />
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

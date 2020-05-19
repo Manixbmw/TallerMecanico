@@ -223,11 +223,13 @@
     <Compile Include="MVVM\MVBase.cs" />
     <Compile Include="MVVM\MVCliente.cs" />
     <Compile Include="MVVM\MVEmpleado.cs" />
+    <Compile Include="MVVM\MVProductos.cs" />
     <Compile Include="MVVM\MVVehiculos.cs" />
     <Compile Include="Servicios\AveriaServicio.cs" />
     <Compile Include="Servicios\ClienteServicio.cs" />
     <Compile Include="Servicios\EmpleadoServicio.cs" />
     <Compile Include="Servicios\IServicioGenerico.cs" />
+    <Compile Include="Servicios\ProductoServicio.cs" />
     <Compile Include="Servicios\ServicioGenerico.cs" />
     <Compile Include="Servicios\VehiculoServicio.cs" />
     <Compile Include="UserControlMenuItem.xaml.cs">
@@ -247,6 +249,9 @@
     </Compile>
     <Compile Include="Vista\ControlesUsuario\UCListaAverias.xaml.cs">
       <DependentUpon>UCListaAverias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCListaProductos.xaml.cs">
+      <DependentUpon>UCListaProductos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ControlesUsuario\UCListaVehiculos.xaml.cs">
       <DependentUpon>UCListaVehiculos.xaml</DependentUpon>
@@ -282,6 +287,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ControlesUsuario\UCListaAverias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCListaProductos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
