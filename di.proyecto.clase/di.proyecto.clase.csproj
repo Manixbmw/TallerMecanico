@@ -245,6 +245,9 @@
     <Compile Include="Vista\ControlesUsuario\UCClienteNuevo.xaml.cs">
       <DependentUpon>UCClienteNuevo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCListaAverias.xaml.cs">
+      <DependentUpon>UCListaAverias.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ControlesUsuario\UCListaVehiculos.xaml.cs">
       <DependentUpon>UCListaVehiculos.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ControlesUsuario\UCClienteNuevo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCListaAverias.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
