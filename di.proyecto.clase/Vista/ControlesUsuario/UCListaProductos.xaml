@@ -29,7 +29,7 @@
 
                     <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}"  />
                     <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" />
-                    <DataGridTextColumn Header="Precio" Binding="{Binding precio}" />
+                    <DataGridTextColumn Header="Precio" Binding="{Binding precio ,StringFormat={}{0:N2}€}" />
                     <DataGridTextColumn Header="Tipo" Binding="{Binding tipoproducto.nombre}" />
                     <DataGridTextColumn Header="Proveedor" Binding="{Binding proveedor.nombre}" />
 

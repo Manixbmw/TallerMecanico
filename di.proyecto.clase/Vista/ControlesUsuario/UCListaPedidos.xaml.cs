@@ -18,14 +18,14 @@ using System.Windows.Shapes;
 namespace di.proyecto.clase.Vista.ControlesUsuario
 {
     /// <summary>
-    /// Lógica de interacción para UCListaAlbaranes.xaml
+    /// Lógica de interacción para UCListaPedidos.xaml
     /// </summary>
-    public partial class UCListaAlbaranes : UserControl
+    public partial class UCListaPedidos : UserControl
     {
         tallerEntities tallerEnt;
         private MVAlbaran mvAlbaran;
 
-        public UCListaAlbaranes(tallerEntities ent)
+        public UCListaPedidos(tallerEntities ent)
         {
             InitializeComponent();
             tallerEnt = ent;

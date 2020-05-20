@@ -13,6 +13,7 @@ namespace di.proyecto.clase.MVVM
     {
         private tallerEntities tallerEnt;
         private AlbaranServicio albServ;
+        private ServicioGenerico<pedidos> pediServ;
 
         private ListCollectionView listaAlba;
 
@@ -21,9 +22,11 @@ namespace di.proyecto.clase.MVVM
             tallerEnt = ent;
             albServ = new AlbaranServicio(tallerEnt);
             listaAlba = new ListCollectionView(albServ.getAll().ToList());
+            pediServ = new ServicioGenerico<pedidos>(tallerEnt);
 
         }
         public ListCollectionView listaAlbaranes { get { return listaAlba; } }
+        public List<pedidos> listaPedidos { get { return pediServ.getAll().ToList(); } }
 
     }
 }
