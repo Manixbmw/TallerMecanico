@@ -1,4 +1,4 @@
-﻿<Window x:Class="di.proyecto.clase.Vista.Dialogos.DAnyadirProducto"
+﻿<Window x:Class="di.proyecto.clase.Vista.Dialogos.DEditarProducto"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,35 +20,35 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <material:Card  Background="#40080C" Padding="10" FontSize="20" Grid.ColumnSpan="2">
-            <TextBlock Text="Añadir producto" Foreground="White"
+            <TextBlock Text="Editar producto" Foreground="White"
                        HorizontalAlignment="Center" FontWeight="Bold"/>
         </material:Card>
         <TextBox  x:Name="txNombre" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  Text="{Binding productoNuevo.nombre,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                  Text="{Binding productoSeleccionado.nombre,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  material:HintAssist.Hint="Nombre" Margin="10" MaxLength="45" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
             <TextBox  x:Name="txPrecio"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       PreviewTextInput="NumberValidationTextBox"
-                      Text="{Binding productoNuevo.precio,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                      Text="{Binding productoSeleccionado.precio,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  material:HintAssist.Hint="Precio" Margin="10" />
 
             <TextBox  x:Name="txCantidad"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       PreviewTextInput="NumberValidationTextBox"
-                      Text="{Binding productoNuevo.cantidad,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                      Text="{Binding productoSeleccionado.cantidad,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  material:HintAssist.Hint="Cantidad" Margin="20,10,10,10" />
         </StackPanel>
 
         <ComboBox x:Name="comboTipo" ItemsSource="{Binding listaTipos}"  DisplayMemberPath="nombre"
-                   SelectedItem="{Binding productoNuevo.tipoproducto, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                   SelectedItem="{Binding productoSeleccionado.tipoproducto, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                   material:HintAssist.Hint="Selecciona un tipo de producto" Grid.Row="2" Grid.Column="0" Margin="10"></ComboBox>
 
         <ComboBox x:Name="comboProveedor" ItemsSource="{Binding listaProveedor}"  DisplayMemberPath="nombre" 
-                  SelectedItem="{Binding productoNuevo.proveedor, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                  SelectedItem="{Binding productoSeleccionado.proveedor, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                   material:HintAssist.Hint="Selecciona un proveedor" Grid.Row="2" Grid.Column="1" Margin="10"></ComboBox>
 
         <TextBox x:Name="txdescripcion" material:HintAssist.Hint="Descripción"  
-                 Text="{Binding productoNuevo.descripcion,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding productoSeleccionado.descripcion,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  Grid.ColumnSpan="2" Grid.Row="3" Height="60" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
 
         <Button x:Name="btnCancelar" Click="BtnCancelar_Click" Margin="20" IsDefault="True" Content="Cancelar" IsCancel="True"

@@ -15,6 +15,7 @@ namespace di.proyecto.clase.MVVM
         private tallerEntities tallerEnt;
         private ProductoServicio prodServ;
         private productos prdNuevo;
+        private productos prdSel;
         private int txtFiltro;
         private string txtNombre;
         private ListCollectionView listaProduc;
@@ -36,6 +37,14 @@ namespace di.proyecto.clase.MVVM
         public List<tipoproducto> listaTipos { get { return tipoProServ.getAll().ToList(); } }
         public List<proveedor> listaProveedor{ get { return provoServ.getAll().ToList(); } }
 
+        public productos productoSeleccionado
+        {
+            get { return prdSel; }
+            set
+            {
+                prdSel = value; OnPropertyChanged("productoSeleccionado");
+            }
+        }
 
 
         public productos productoNuevo
@@ -67,6 +76,41 @@ namespace di.proyecto.clase.MVVM
                 txtNombre = value;
                 OnPropertyChanged("textoFiltroNombre");
             }
+        }
+
+        public bool editaProducto()
+        {
+            bool correcto = true;
+            prodServ.edit(productoSeleccionado);
+            try
+            {
+                prodServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+
+        public bool borrarProducto()
+        {
+            bool correcto = true;
+            prodServ.delete(productoSeleccionado);
+            try
+            {
+                prodServ.save();
+
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
         }
 
         public bool guarda()
