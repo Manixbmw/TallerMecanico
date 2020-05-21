@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" Width="850">
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="70">
+        <Grid DockPanel.Dock="Top" Height="70" Background="Black">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -17,16 +20,49 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Text="LISTA DE PRODUCTOS" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="LISTA DE PRODUCTOS"  FontSize="20" Margin="20" Foreground="WhiteSmoke" FontWeight="Bold"></TextBlock>
+
+            <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="0" Grid.Column="1" MaxLength="20"                  
+                  Text="{Binding textoFiltroID ,UpdateSourceTrigger=PropertyChanged}" 
+                  x:Name="txtFiltroID" TextChanged="TxtFiltroID_TextChanged" Foreground="White"
+                  material:HintAssist.Hint="ID Producto" Margin="10" FontSize="12" Background="#FF323232" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80"
+               />
+            <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="0" Grid.Column="2" MaxLength="20"                  
+                   Text="{Binding textoFiltroNombre, UpdateSourceTrigger=PropertyChanged}" 
+                  x:Name="txtFiltroNombre" TextChanged="TxtFiltroNombre_TextChanged" Foreground="White"
+                  material:HintAssist.Hint="Nombre Producto" Margin="10" FontSize="12" Background="#FF323232" HorizontalAlignment="Left" VerticalAlignment="Center"
+               />
+
+            <StackPanel  Orientation="Horizontal" Grid.Row="0" Grid.Column="3" Margin="50,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                <Button  x:Name="btnReset" Click="BtnReset_Click"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#40080C" Foreground="White"
+              ToolTip="MaterialDesignFloatingActionMiniLightButton" >
+                    <material:PackIcon Kind="Refresh" Height="24" Width="24" />
+                </Button>
+
+                <Button  x:Name="btnAnyadir" Margin="10,0,0,0" Click="BtnAnyadir_Click"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#40080C" Foreground="White"
+              ToolTip="MaterialDesignFloatingActionMiniLightButton" >
+                    <material:PackIcon Kind="Plus" Height="24" Width="24" />
+                </Button>
+
+                <Button  x:Name="btnBorrar" Margin="10,0,0,0" Click="BtnBorrar_Click"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#40080C" Foreground="White"
+              ToolTip="MaterialDesignFloatingActionMiniLightButton" >
+                    <material:PackIcon Kind="DeleteEmpty" Height="24" Width="24" />
+                </Button>
+
+            </StackPanel >
 
         </Grid>
         <Grid Background="#FF895D5D" >
 
-            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False"   CanUserAddRows="False" ItemsSource="{Binding listaProductos}"  AlternatingRowBackground="#FF494949"
+            <DataGrid x:Name="dgListaProductos" AutoGenerateColumns="False"   CanUserAddRows="False" ItemsSource="{Binding listaProductos}"  AlternatingRowBackground="#FF494949"
                       GridLinesVisibility="All" HorizontalGridLinesBrush="Gray" VerticalGridLinesBrush="Gray" Background="#FF522B2B" >
 
                 <DataGrid.Columns>
-
+                    <DataGridTextColumn Header="ID" Binding="{Binding idProducto}"  />
                     <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}"  />
                     <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" />
                     <DataGridTextColumn Header="Precio" Binding="{Binding precio ,StringFormat={}{0:N2}€}" />

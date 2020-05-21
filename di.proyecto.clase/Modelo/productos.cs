@@ -9,10 +9,12 @@
 
 namespace di.proyecto.clase.Modelo
 {
+    using di.proyecto.clase.MVVM;
     using System;
     using System.Collections.Generic;
-    
-    public partial class productos
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class productos : MVBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public productos()
@@ -23,11 +25,16 @@ namespace di.proyecto.clase.Modelo
         }
     
         public int idProducto { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el nombre")]
         public string nombre { get; set; }
         public string descripcion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el precio")]
         public float precio { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner la cantidad")]
         public int cantidad { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el tipo de producto")]
         public Nullable<int> tipo { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el nombre del proveedor")]
         public int idProveedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

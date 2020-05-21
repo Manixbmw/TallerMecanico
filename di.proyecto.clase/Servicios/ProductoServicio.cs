@@ -20,5 +20,11 @@ namespace di.proyecto.clase.Servicios
         {
             contexto = context;
         }
+
+        public int getLastId()
+        {
+            productos prd = contexto.Set<productos>().OrderByDescending(a => a.idProducto).FirstOrDefault();
+            return prd.idProducto;
+        }
     }
 }

@@ -264,6 +264,9 @@
     <Compile Include="Vista\ControlesUsuario\UCVehiculoNuevo.xaml.cs">
       <DependentUpon>UCVehiculoNuevo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Dialogos\DAnyadirProducto.xaml.cs">
+      <DependentUpon>DAnyadirProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Dialogos\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -308,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ControlesUsuario\UCVehiculoNuevo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DAnyadirProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
