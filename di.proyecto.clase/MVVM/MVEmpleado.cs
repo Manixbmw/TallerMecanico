@@ -15,6 +15,7 @@ namespace di.proyecto.clase.MVVM
         private EmpleadoServicio empServ;
         //Lista de modelos para trabajar con filtros en las tablas
         private ListCollectionView listaEmpl;
+        private ListCollectionView listaEmpl2;
 
 
         public MVEmpleado(tallerEntities ent)
@@ -22,10 +23,11 @@ namespace di.proyecto.clase.MVVM
             tallerEnt = ent;
             empServ = new EmpleadoServicio(tallerEnt);
             listaEmpl = new ListCollectionView(empServ.getAll().ToList());
+            listaEmpl2 = new ListCollectionView(empServ.getAll().ToList());
 
         }
         public ListCollectionView listaEmpleados { get { return listaEmpl; } }
-
+        public ListCollectionView listaEmpleados2 { get { return listaEmpl2; } }
 
 
     }

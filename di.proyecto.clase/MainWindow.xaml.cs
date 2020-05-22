@@ -65,7 +65,7 @@ namespace di.proyecto.clase
 
             var menuEmpleados = new List<SubItem>();
             var item4 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
-            menuEmpleados.Add(new SubItem("Gestion"));
+            menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));
             menuEmpleados.Add(new SubItem("Listado"));
         
 
