@@ -1,5 +1,6 @@
 ﻿using di.proyecto.clase.Modelo;
 using di.proyecto.clase.MVVM;
+using di.proyecto.clase.Vista.Dialogos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,15 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             tallerEnt = ent;
             mvEmpl = new MVEmpleado(tallerEnt);
             DataContext = mvEmpl;
+
+            
         }
 
         private void BtnAnyadir_Click(object sender, RoutedEventArgs e)
         {
-
+            DAnyadirEmpleado diag = new DAnyadirEmpleado(tallerEnt);
+            diag.ShowDialog();
+            dgListaProductos.Items.Refresh();
         }
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)

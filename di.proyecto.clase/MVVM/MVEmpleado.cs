@@ -2,6 +2,7 @@
 using di.proyecto.clase.Servicios;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,26 +10,69 @@ using System.Windows.Data;
 
 namespace di.proyecto.clase.MVVM
 {
-    class MVEmpleado : MVBase
+    public class MVEmpleado : MVBase
     {
         private tallerEntities tallerEnt;
         private EmpleadoServicio empServ;
         //Lista de modelos para trabajar con filtros en las tablas
         private ListCollectionView listaEmpl;
-        private ListCollectionView listaEmpl2;
+        private empleado emplNuevo;
+        private ServicioGenerico<rol> rolServ;
+        public bool editar { get; set; }
 
 
         public MVEmpleado(tallerEntities ent)
         {
             tallerEnt = ent;
             empServ = new EmpleadoServicio(tallerEnt);
-            listaEmpl = new ListCollectionView(empServ.getAll().ToList());
-            listaEmpl2 = new ListCollectionView(empServ.getAll().ToList());
+            listaEmpl = new ListCollectionView(empServ.getAll().ToList());            
+            rolServ = new ServicioGenerico<rol>(tallerEnt);
+            emplNuevo = new empleado();
 
         }
         public ListCollectionView listaEmpleados { get { return listaEmpl; } }
-        public ListCollectionView listaEmpleados2 { get { return listaEmpl2; } }
+        public List<rol> listaRol { get { return rolServ.getAll().ToList(); } }
 
+        public empleado empleadoNuevo
+        {
+            get { return emplNuevo; }
+            set
+            {
+                emplNuevo = value;
+                OnPropertyChanged("empleadoNuevo");
+            }
+        }
+        public bool guarda()
+        {
+            bool correcto = true;
+            empServ.add(empleadoNuevo);
+            empleadoNuevo.id = empServ.getLastId() + 1;
+            try
+            {
+                if (editar)
+                {
+                    empServ.edit(empleadoNuevo);
+                    listaEmpleados.EditItem(empleadoNuevo);
+                    listaEmpleados.CommitEdit();
+
+                }
+                else
+                {
+                    empServ.add(empleadoNuevo);
+
+                }
+
+                empServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+
+            return correcto;
+        }
 
     }
 }

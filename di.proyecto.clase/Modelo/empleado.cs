@@ -9,10 +9,12 @@
 
 namespace di.proyecto.clase.Modelo
 {
+    using di.proyecto.clase.MVVM;
     using System;
     using System.Collections.Generic;
-    
-    public partial class empleado
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class empleado : MVBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public empleado()
@@ -21,17 +23,28 @@ namespace di.proyecto.clase.Modelo
         }
     
         public int id { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Nombre")]
         public string nombre { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Apellido")]
         public string apellido1 { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el 2º Apellido")]
         public string apellido2 { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Rol correspondiente")]
         public int rol { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Email")]
         public string email { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Usuario")]
         public string usuario { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner la Contraseña")]
         public string password { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el DNI")]
         public string dni { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Telefono")]
         public string telefono { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el Calle")]
         public string calle { get; set; }
         public string poblacion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el CP")]
         public Nullable<int> CP { get; set; }
         public string provincia { get; set; }
     

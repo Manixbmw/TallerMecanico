@@ -27,6 +27,12 @@ namespace di.proyecto.clase.Servicios
             contexto = context;
         }
 
+        public int getLastId()
+        {
+            empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
+            return emp.id;
+        }
+
         /*
          * Método que comprueba las credenciales del usuario en la base de datos
          */

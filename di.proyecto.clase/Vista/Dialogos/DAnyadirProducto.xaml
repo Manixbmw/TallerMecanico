@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
         mc:Ignorable="d"
         Title="Añadir producto"  SizeToContent="WidthAndHeight">
-    <Grid>
+    <Grid Background="DarkGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="200"></ColumnDefinition>

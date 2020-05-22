@@ -18,45 +18,47 @@ using System.Windows.Shapes;
 namespace di.proyecto.clase.Vista.Dialogos
 {
     /// <summary>
-    /// Lógica de interacción para DAnyadirProducto.xaml
+    /// Lógica de interacción para DAnyadirEmpleado.xaml
     /// </summary>
-    public partial class DAnyadirProducto : Window
+    public partial class DAnyadirEmpleado : Window
     {
 
         tallerEntities tallerEnt;
-        private MVProductos mvProductos;
+        private MVEmpleado mvEmpl;
         public bool editar { get; set; }
 
-        public DAnyadirProducto(tallerEntities ent)
+        public DAnyadirEmpleado(tallerEntities ent)
         {
             InitializeComponent();
             tallerEnt = ent;
-            mvProductos = new MVProductos(tallerEnt);
-            DataContext = mvProductos;
+            mvEmpl = new MVEmpleado(tallerEnt);
+            DataContext = mvEmpl;
 
-            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(mvProductos.OnErrorEvent));
-            mvProductos.btnGuardar = btnGuardarProducto;
+            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(mvEmpl.OnErrorEvent));
+            mvEmpl.btnGuardar = btnGuardarEmpleado;
 
         }
 
+        //Solo se pueda poner numeros en la entrada de texto
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void BtnGuardarProducto_Click(object sender, RoutedEventArgs e)
+        
+        private void BtnGuardarEmpleado_Click(object sender, RoutedEventArgs e)
         {
-            mvProductos.editar = editar;
-            if (mvProductos.IsValid(this))
+            mvEmpl.editar = editar;
+            if (mvEmpl.IsValid(this))
             {
-                if (mvProductos.guarda())
+                if (mvEmpl.guarda())
                 {
                     MessageBox.Show("Todo correcto");
                 }
                 else
                 {
-                    MessageBox.Show("Problema con la base de datos, no se ha añadido", "Gestion productos", MessageBoxButton.OK);
+                    MessageBox.Show("Problema con la base de datos, no se ha añadido", "Gestion empleados", MessageBoxButton.OK);
                 }
             }
             else
@@ -64,7 +66,6 @@ namespace di.proyecto.clase.Vista.Dialogos
                 MessageBox.Show("Tienes campos obligatorios");
             }
         }
-
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
