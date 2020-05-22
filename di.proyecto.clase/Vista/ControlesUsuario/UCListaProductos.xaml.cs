@@ -37,39 +37,56 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
 
         private void TxtFiltroID_TextChanged(object sender, TextChangedEventArgs e)
         {
-            dgListaProductos.Items.Filter = new Predicate<object>(FiltroCombinado);
+            dgListaProductos.Items.Filter = new Predicate<object>(FiltroId);
         }
 
         private void TxtFiltroNombre_TextChanged(object sender, TextChangedEventArgs e)
         {
-            dgListaProductos.Items.Filter = new Predicate<object>(FiltroCombinado);
+            dgListaProductos.Items.Filter = new Predicate<object>(FiltroNombre);
         }
 
-        private bool FiltroCombinado(object item) 
+        private bool FiltroId(object item) 
         {
-            bool esta = false;
-            
-            productos prod;
-            prod = (productos)item;
+            bool esta = false;           
+            productos prod;           
             
             if (item != null)
             {
+                prod = (productos)item;
                 if (!string.IsNullOrEmpty(txtFiltroID.Text)) //Si hemos escrito algo en el campo de texto
                 {
 
                     //solo filtra si exactamente igual si pones 5 no sale 50 
-                    if ((prod.idProducto.Equals(mvProductos.textoFiltroID))) 
+                    if (((prod.idProducto.ToString() != null) && (prod.idProducto.ToString().StartsWith(mvProductos.textoFiltroID.ToString())))) 
+                    {
+                        esta = true;
+                    }
+                }                                 
+
+            }
+            return esta;
+        }
+        private bool FiltroNombre(object item)
+        {
+            bool esta = false;
+            productos prod;
+
+            if (item != null)
+            {
+                prod = (productos)item;                
+                 if (!string.IsNullOrEmpty(txtFiltroNombre.Text))
+                {
+                    if ((!string.IsNullOrEmpty(prod.nombre)) && (prod.nombre.ToUpper().StartsWith(mvProductos.textoFiltroNombre.ToUpper())))
                     {
                         esta = true;
                     }
                 }
-                    
 
             }
             return esta;
         }
 
-        
+
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
