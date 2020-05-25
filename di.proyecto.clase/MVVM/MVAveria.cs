@@ -21,6 +21,7 @@ namespace di.proyecto.clase.MVVM
         private ServicioGenerico<tipoaveria> tipoServ;
         private ServicioGenerico<estado> estadoServ;
         private ListCollectionView listaAver;
+        private String txtFech;
         public bool editar { get; set; }
 
         public MVAveria(tallerEntities ent)
@@ -88,6 +89,15 @@ namespace di.proyecto.clase.MVVM
             }
 
             return correcto;
+        }
+        public String textoFiltroFechaIni
+        {
+            get { return txtFech; }
+            set
+            {
+                txtFech = value;
+                OnPropertyChanged("textoFiltroFechaIni");
+            }
         }
 
     }

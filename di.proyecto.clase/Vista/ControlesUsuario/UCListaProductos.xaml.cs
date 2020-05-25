@@ -25,7 +25,7 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
     {
         tallerEntities tallerEnt;
         private MVProductos mvProductos;
-        
+
 
         public UCListaProductos(tallerEntities ent)
         {
@@ -45,23 +45,21 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             dgListaProductos.Items.Filter = new Predicate<object>(FiltroNombre);
         }
 
-        private bool FiltroId(object item) 
+        private bool FiltroId(object item)
         {
-            bool esta = false;           
-            productos prod;           
-            
+            bool esta = false;
+            productos prod;
+
             if (item != null)
             {
                 prod = (productos)item;
                 if (!string.IsNullOrEmpty(txtFiltroID.Text)) //Si hemos escrito algo en el campo de texto
-                {
-
-                    //solo filtra si exactamente igual si pones 5 no sale 50 
-                    if (((prod.idProducto.ToString() != null) && (prod.idProducto.ToString().StartsWith(mvProductos.textoFiltroID.ToString())))) 
+                {                   
+                    if (((prod.idProducto.ToString() != null) && (prod.idProducto.ToString().StartsWith(mvProductos.textoFiltroID.ToString()))))
                     {
                         esta = true;
                     }
-                }                                 
+                }
 
             }
             return esta;
@@ -73,8 +71,8 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
 
             if (item != null)
             {
-                prod = (productos)item;                
-                 if (!string.IsNullOrEmpty(txtFiltroNombre.Text))
+                prod = (productos)item;
+                if (!string.IsNullOrEmpty(txtFiltroNombre.Text))
                 {
                     if ((!string.IsNullOrEmpty(prod.nombre)) && (prod.nombre.ToUpper().StartsWith(mvProductos.textoFiltroNombre.ToUpper())))
                     {
@@ -118,7 +116,7 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
                         //borramos lo que queremos
                         mvProductos.productoSeleccionado = (productos)dgListaProductos.SelectedItem;
                         mvProductos.borrarProducto();
-                        
+
                     }
                     dgListaProductos.Items.Refresh();
                 }
@@ -130,9 +128,9 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
 
 
 
-           
 
-            
+
+
         }
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
