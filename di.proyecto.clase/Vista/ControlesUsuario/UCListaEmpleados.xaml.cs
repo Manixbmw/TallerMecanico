@@ -41,22 +41,64 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
         {
             DAnyadirEmpleado diag = new DAnyadirEmpleado(tallerEnt);
             diag.ShowDialog();
-            dgListaProductos.Items.Refresh();
+            dgListaEmpleados.Items.Refresh();
         }
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dgListaEmpleados.SelectedItem != null)
+            {
+                if (dgListaEmpleados.SelectedItem is empleado)
+                {
+                    mvEmpl.empleadoSeleccionado = (empleado)dgListaEmpleados.SelectedItem;
+                    DEditarEmpleado diag = new DEditarEmpleado(mvEmpl);
+                    diag.ShowDialog();
+                    // Comprobamos que todo ha ido bien
+                    if ((bool)diag.DialogResult)
+                    {
+                        dgListaEmpleados.Items.Refresh();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto antes de editarlo", "GESTIÓN PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BtnBorrar_Click(object sender, RoutedEventArgs e)
         {
 
+            if (dgListaEmpleados.SelectedItem != null)
+            {
+                if (dgListaEmpleados.SelectedItem is empleado)
+                {
+
+                    if (!(MessageBox.Show("Estas seguro que quieres borrarlo?", "Porfavor confirma.", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                    {
+                        // Cancel Delete.              
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //borramos lo que queremos
+                        mvEmpl.empleadoSeleccionado = (empleado)dgListaEmpleados.SelectedItem;
+                        mvEmpl.borrarEmpleado();
+
+                    }
+                    dgListaEmpleados.Items.Refresh();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto antes de borrarlo", "GESTIÓN PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
-
+            dgListaEmpleados.Items.Filter = null;
+            dgListaEmpleados.Items.Refresh();
         }
     }
 }

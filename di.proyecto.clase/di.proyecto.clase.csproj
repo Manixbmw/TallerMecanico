@@ -48,6 +48,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.4.1361, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.4\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -256,6 +262,9 @@
     <Compile Include="Vista\ControlesUsuario\UCClienteNuevo.xaml.cs">
       <DependentUpon>UCClienteNuevo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCListaClientes.xaml.cs">
+      <DependentUpon>UCListaClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ControlesUsuario\UCListaEmpleados.xaml.cs">
       <DependentUpon>UCListaEmpleados.xaml</DependentUpon>
     </Compile>
@@ -280,6 +289,9 @@
     <Compile Include="Vista\Dialogos\DAnyadirProducto.xaml.cs">
       <DependentUpon>DAnyadirProducto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Dialogos\DEditarEmpleado.xaml.cs">
+      <DependentUpon>DEditarEmpleado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Dialogos\DEditarProducto.xaml.cs">
       <DependentUpon>DEditarProducto.xaml</DependentUpon>
     </Compile>
@@ -289,6 +301,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Vista\Graficos\GraficosReparaciones.xaml.cs">
+      <DependentUpon>GraficosReparaciones.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -311,6 +326,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ControlesUsuario\UCClienteNuevo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCListaClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -346,11 +365,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Dialogos\DEditarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\Dialogos\DEditarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\Dialogos\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Graficos\GraficosReparaciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

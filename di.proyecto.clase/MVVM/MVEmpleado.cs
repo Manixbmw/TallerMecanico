@@ -17,6 +17,7 @@ namespace di.proyecto.clase.MVVM
         //Lista de modelos para trabajar con filtros en las tablas
         private ListCollectionView listaEmpl;
         private empleado emplNuevo;
+        private empleado emplSelec;
         private ServicioGenerico<rol> rolServ;
         public bool editar { get; set; }
 
@@ -42,6 +43,16 @@ namespace di.proyecto.clase.MVVM
                 OnPropertyChanged("empleadoNuevo");
             }
         }
+
+        public empleado empleadoSeleccionado
+        {
+            get { return emplSelec; }
+            set
+            {
+                emplSelec = value; OnPropertyChanged("empleadoSeleccionado");
+            }
+        }
+
         public bool guarda()
         {
             bool correcto = true;
@@ -73,6 +84,42 @@ namespace di.proyecto.clase.MVVM
 
             return correcto;
         }
+
+        public bool editaEmpleado()
+        {
+            bool correcto = true;
+            empServ.edit(empleadoSeleccionado);
+            try
+            {
+                empServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+
+        public bool borrarEmpleado()
+        {
+            bool correcto = true;
+            empServ.delete(empleadoSeleccionado);
+            try
+            {
+                empServ.save();
+
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+
 
     }
 }

@@ -125,12 +125,6 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             {
                 MessageBox.Show("Selecciona un producto antes de borrarlo", "GESTIÓN PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
-
-
-
-
-
         }
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)

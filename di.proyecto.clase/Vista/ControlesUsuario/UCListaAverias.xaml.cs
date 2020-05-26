@@ -76,12 +76,17 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
 
         private void BtnFiltrarFechas_Click(object sender, RoutedEventArgs e)
         {
+
+
             criterios.Clear();
 
             if (FechaIni.SelectedDate !=null)
             {
-                //criterios.Add(new Predicate<averia>(a => (a.fechaRecepcion != null) && a.fechaRecepcion.ToString().Contains(FechaIni.ToString())));
                 criterios.Add(new Predicate<averia>(a => (a.fechaRecepcion != null) && a.fechaRecepcion.ToString().Contains(FechaIni.ToString())));
+                
+
+               //criterios.Add(new Predicate<averia>(tallerEnt.averia.Where(x => x.fechaRecepcion >= FechaIni.SelectedDate.Value.Date && x.fechaRecepcion <= FechaFin.SelectedDate.Value.Date).ToList()));
+
                 //"FROM_DATE <= #" + filterstring + "# AND TO_DATE > #" + filterstring + "#";
             }
                

@@ -2,6 +2,7 @@
 using di.proyecto.clase.Modelo;
 using di.proyecto.clase.Vista.ControlesUsuario;
 using di.proyecto.clase.Vista.Dialogos;
+using di.proyecto.clase.Vista.Graficos;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -32,14 +33,17 @@ namespace di.proyecto.clase
             tallerEnt = ent;
 
             var menuVehiculos = new List<SubItem>();
-            var item6 = new ItemMenu("Vehiculos", menuVehiculos, PackIconKind.Car);
-            menuVehiculos.Add(new SubItem("Nuevo", new UCVehiculoNuevo(ent)));
-            menuVehiculos.Add(new SubItem("Cliente", new UCClienteNuevo(ent)));
-            menuVehiculos.Add(new SubItem("Lista", new UCListaVehiculos(ent)));            
+            var item1 = new ItemMenu("Vehiculos", menuVehiculos, PackIconKind.Car);
+            menuVehiculos.Add(new SubItem("Nuevo", new UCVehiculoNuevo(ent)));            
+            menuVehiculos.Add(new SubItem("Lista", new UCListaVehiculos(ent)));
 
+            var menuCliente = new List<SubItem>();
+            var item2 = new ItemMenu("Cliente", menuCliente, PackIconKind.Account);
+            menuCliente.Add(new SubItem("Nuevo", new UCClienteNuevo(ent)));
+            menuCliente.Add(new SubItem("Lista", new UCListaClientes(ent)));
 
             var menuAverias = new List<SubItem>();
-            var item1 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
+            var item3 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
             menuAverias.Add(new SubItem("Nueva",new UCAveriaNueva(ent)));
             menuAverias.Add(new SubItem("Gestion",new UCArbolAverias(ent)));
             menuAverias.Add(new SubItem("Solucion"));
@@ -49,33 +53,24 @@ namespace di.proyecto.clase
 
 
             var menuGestion = new List<SubItem>();
-            var item2 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
+            var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
             menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaPedidos(ent)));           
             menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
             menuGestion.Add(new SubItem("Informe"));
 
-
-            var menuTareas = new List<SubItem>();
-            var item3 = new ItemMenu("Tareas", menuTareas, PackIconKind.ShoppingBasket);
-            menuTareas.Add(new SubItem("Pendientes"));
-            menuTareas.Add(new SubItem("Finalizadas"));
-            menuTareas.Add(new SubItem("Resumen"));
-
-
-
             var menuEmpleados = new List<SubItem>();
-            var item4 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
+            var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
             menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));
             menuEmpleados.Add(new SubItem("Listado"));
-        
 
-
-
-            Menu.Children.Add(new UserControlMenuItem(item6, this));
+            
+            
             Menu.Children.Add(new UserControlMenuItem(item1, this));
             Menu.Children.Add(new UserControlMenuItem(item2, this));
             Menu.Children.Add(new UserControlMenuItem(item3, this));
             Menu.Children.Add(new UserControlMenuItem(item4, this));
+            Menu.Children.Add(new UserControlMenuItem(item5, this));
+
         }
 
         internal void SwichScreen(object sender)

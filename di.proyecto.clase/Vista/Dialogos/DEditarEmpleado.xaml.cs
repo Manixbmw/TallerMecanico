@@ -1,5 +1,4 @@
-﻿using di.proyecto.clase.Modelo;
-using di.proyecto.clase.MVVM;
+﻿using di.proyecto.clase.MVVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,37 +17,35 @@ using System.Windows.Shapes;
 namespace di.proyecto.clase.Vista.Dialogos
 {
     /// <summary>
-    /// Lógica de interacción para DEditarProducto.xaml
+    /// Lógica de interacción para DEditarEmpleado.xaml
     /// </summary>
-    public partial class DEditarProducto : Window
+    public partial class DEditarEmpleado : Window
     {
-        private MVProductos mvProductos;
+        private MVEmpleado MVEmpleado;
         public bool editar { get; set; }
 
-
-        public DEditarProducto(MVProductos MV)
+        public DEditarEmpleado(MVEmpleado mv)
         {
             InitializeComponent();
-            mvProductos = MV;
-            DataContext = mvProductos;
+            MVEmpleado = mv;
+            DataContext = MVEmpleado;
         }
-
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void BtnGuardarProducto_Click(object sender, RoutedEventArgs e)
+        private void BtnGuardarEmpleado_Click(object sender, RoutedEventArgs e)
         {
-            if (mvProductos.editaProducto())
+            if (MVEmpleado.editaEmpleado())
             {
-                MessageBox.Show("Producto editado correctamente", "GESTIÓN DE PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Empleado editado correctamente", "GESTIÓN DE EMPLEADOS", MessageBoxButton.OK, MessageBoxImage.Information);
                 DialogResult = true;
             }
             else
             {
-                MessageBox.Show("ERROR!!! NO SE HA PODIDO EDITAR", "GESTIÓN DE PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("ERROR!!! NO SE HA PODIDO EDITAR", "GESTIÓN DE EMPLEADOS", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
