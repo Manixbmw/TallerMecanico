@@ -57,12 +57,14 @@ namespace di.proyecto.clase
             var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
             menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaPedidos(ent)));           
             menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
-            menuGestion.Add(new SubItem("Informe"));
+            menuGestion.Add(new SubItem("Informe",new InformeInventario(ent)));
+            menuGestion.Add(new SubItem("Movimiento de Productos"));
+           
 
             var menuEmpleados = new List<SubItem>();
             var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
             menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));
-            menuEmpleados.Add(new SubItem("Listado"));
+            
 
             
             

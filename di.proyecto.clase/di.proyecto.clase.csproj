@@ -60,8 +60,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=3.1.1.1361, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.3.1.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.0\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +107,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Informes\DSProductosCrystal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSProductosCrystal.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -411,6 +417,7 @@
     <Resource Include="Recursos\Iconos\windows.png" />
     <Resource Include="Recursos\Iconos\google.png" />
     <EmbeddedResource Include="Informes\Report1.rdlc" />
+    <EmbeddedResource Include="Informes\Report2.rdlc" />
     <EmbeddedResource Include="Informes\ReportInventario.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -464,6 +471,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDTaller.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Informes\DSProductosCrystal.xsc">
+      <DependentUpon>DSProductosCrystal.xsd</DependentUpon>
+    </None>
+    <None Include="Informes\DSProductosCrystal.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSProductosCrystal.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Informes\DSProductosCrystal.xss">
+      <DependentUpon>DSProductosCrystal.xsd</DependentUpon>
+    </None>
     <None Include="Modelo\BDTaller.edmx.diagram">
       <DependentUpon>BDTaller.edmx</DependentUpon>
     </None>
@@ -476,6 +494,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\di.proyecto.clase.Modelo.productos.datasource" />
     <None Include="Properties\DataSources\di.proyecto.clase.Modelo.proveedor.datasource" />
+    <None Include="Properties\DataSources\di.proyecto.clase.Modelo.tipoproducto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
