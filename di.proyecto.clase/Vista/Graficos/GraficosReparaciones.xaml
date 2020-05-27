@@ -11,7 +11,7 @@
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="70" >            
             
-            <TextBlock Text="LISTA DE CLIENTES" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="RESUMEN REPARACIONES POR MES" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
             
         </Grid>
         <Grid HorizontalAlignment="Left" >
