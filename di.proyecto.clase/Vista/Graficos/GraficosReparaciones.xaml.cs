@@ -44,10 +44,11 @@ namespace di.proyecto.clase.Vista.Graficos
             //SELECT MONTH(fechaRecepcion) Mes, SUM(id) total_mes FROM averia GROUP BY Mes; regulera
             //select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia Group By Month   averias totales
             //select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia where estado = 3 Group By Month  averias Reparadas
+            // SET lc_time_names = 'es_ES' ; select  CONCAT(UPPER(LEFT(MonthName(fechaRecepcion),1)),SUBSTR(MonthName(fechaRecepcion),2)) as Month, count(id) as averias from taller.averia where estado = 3 Group By Month para que salga la primera letra en Mayus.
 
             //SET lc_time_names = 'es_ES' para cambiar el idioma de los mese del Mysql
 
-            DataTable dt = serChart.getDatos("select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia where estado = 3  Group By Month");
+            DataTable dt = serChart.getDatos("SET lc_time_names = 'es_ES' ; select CONCAT(UPPER(LEFT(MonthName(fechaRecepcion),1)),SUBSTR(MonthName(fechaRecepcion),2)) as Month, count(id) as averias from taller.averia where estado = 3 Group By Month ");
            
             Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
             ChartValues<double> cht_y_values = new ChartValues<double>();
