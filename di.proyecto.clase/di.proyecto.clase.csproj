@@ -302,9 +302,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Vista\Graficos\GraficosStock.xaml.cs">
+      <DependentUpon>GraficosStock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Graficos\GraficosReparaciones.xaml.cs">
       <DependentUpon>GraficosReparaciones.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Graficos\ServicioCharts.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -377,6 +381,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Graficos\GraficosStock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\Graficos\GraficosReparaciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -402,6 +410,7 @@
     <Resource Include="Recursos\Iconos\twitter.png" />
     <Resource Include="Recursos\Iconos\windows.png" />
     <Resource Include="Recursos\Iconos\google.png" />
+    <EmbeddedResource Include="Informes\Report1.rdlc" />
     <EmbeddedResource Include="Informes\ReportInventario.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

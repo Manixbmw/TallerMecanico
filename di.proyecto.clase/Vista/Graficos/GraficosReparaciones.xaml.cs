@@ -4,6 +4,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,54 +26,45 @@ namespace di.proyecto.clase.Vista.Graficos
     public partial class GraficosReparaciones : UserControl
     {
 
-        tallerEntities tallerEnt;
-        private MVProductos MVProductos;
+        tallerEntities tallerEnt;       
+        private ServicioCharts serChart;
 
         public GraficosReparaciones(tallerEntities ent)
         {
             InitializeComponent();
-            tallerEnt = ent;
-            MVProductos = new MVProductos(tallerEnt);
-            
+            tallerEnt = ent;            
+            serChart = new ServicioCharts();
             loadChart();
+            DataContext = this;
         }
 
-		private void loadChart()
-		{
-			// Crea una lista de ChartValues para almacenar la cantidad de alumnos
-			ChartValues<double> valores = new ChartValues<double>();
-			// Crea una lista de string para almacenar los nombres de los grupos
-			List<String> etiquetas = new List<string>();
-			// Recorremos la lista de grupos. El Objeto mvGraf es una clase
-			// MVVM que hemos creado para obtener los datos de los grupos
-			foreach (productos a in MVProductos.listaProductos)
-			{
-				// Añadimos a la lista anterior el número de alumnos de cada
-				// grupo. Representan los valores del eje Y del gráfico
-				valores.Add(a.cantidad);
-				// Añadimos a la lista anterior el nombre de cada grupo.
-				// Representan los valores del eje X del gráfico
-				etiquetas.Add(a.nombre);
-			}
-			// Creamos la Serie del gráfico. Contiene los valores a visualizar
-			// Se corresponde al eje Y
-			lvGrupos.Series = new SeriesCollection
-                 {
-                 new ColumnSeries
-                 {
-                 Title = "Número de Alumnos", // Título de la serie
-                 Values = valores, // Número de alumnos en cada grupo
-                 DataLabels = true, // Visualizamos las etiquetas
-                 Fill = Brushes.Red // Lo visualizamos de color naranja
-                 }
-                 };
-			// Valores que veremos en el ejeX
-			lvGrupos.AxisX.Add(new Axis
-			{
-				Title = "Grupos", // Titulo del eje X
-				Labels = etiquetas, // Nombres de los grupos
-				Unit = 1 // Separación entre valores
-			});
-		}
-	}
+        private void loadChart()
+        {
+
+            //SELECT MONTH(fechaRecepcion) Mes, SUM(id) total_mes FROM averia GROUP BY Mes; regulera
+            //select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia Group By Month   averias totales
+            //select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia where estado = 3 Group By Month  averias Reparadas
+
+            DataTable dt = serChart.getDatos("select MonthName(fechaRecepcion) as Month, count(id) as averias from taller.averia where estado = 3  Group By Month");
+           
+            Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            ChartValues<double> cht_y_values = new ChartValues<double>();
+            SeriesCollection series = new LiveCharts.SeriesCollection();
+
+            //no puedo contolar si fechaRecepcion esta vacia en alguna tabla ,como resultado no deja que funcione el programa
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                PieSeries ps = new PieSeries
+                {
+                    Title = "" + dr[0] ,
+                    Values = new ChartValues<double> { double.Parse(dr[1].ToString()) },
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                };
+                series.Add(ps);
+            }
+            lvRepMes.Series = series;
+        }
+    }
 }

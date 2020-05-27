@@ -49,6 +49,7 @@ namespace di.proyecto.clase
             menuAverias.Add(new SubItem("Solucion"));
             menuAverias.Add(new SubItem("Historial",new UCListaAverias(ent)));
             menuAverias.Add(new SubItem("Factura"));
+            menuAverias.Add(new SubItem("Graficos",new GraficosReparaciones(ent)));
 
 
 

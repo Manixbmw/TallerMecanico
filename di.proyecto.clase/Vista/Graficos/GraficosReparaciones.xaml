@@ -4,10 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lv="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:di.proyecto.clase.Vista.Graficos"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1200">
-    <Grid  HorizontalAlignment="Left" >
-        <lv:CartesianChart  Margin="20" Width="1000" x:Name="lvGrupos" />
-    </Grid>
+             d:DesignHeight="580" d:DesignWidth="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="70" >            
+            
+            <TextBlock Text="LISTA DE CLIENTES" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
+            
+        </Grid>
+        <Grid HorizontalAlignment="Left" >
+            <lv:PieChart  Margin="20" Width="800" x:Name="lvRepMes" HorizontalAlignment="Left"   />
+        </Grid>
+    </DockPanel>
+   
 </UserControl>
