@@ -8,9 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="820">
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="70" >
-            <TextBlock Text="INFORME" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
-        </Grid>
+        
         <Grid>
             <WindowsFormsHost x:Name="Informe" Margin="10" Width="800">
                 <rv:ReportViewer x:Name="reporInventario"   />
