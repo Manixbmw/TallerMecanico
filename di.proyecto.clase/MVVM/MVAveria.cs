@@ -15,6 +15,8 @@ namespace di.proyecto.clase.MVVM
         private tallerEntities tallerEnt;
         private AveriaServicio aveServ;
         private averia aveNueva;
+        private tipoaveria tipoAve;
+        private estado estadoAve;
         private ServicioGenerico<empleado> empServ;
         private ServicioGenerico<cliente> clieServ;
         private ServicioGenerico<vehiculo> vehServ;
@@ -41,6 +43,8 @@ namespace di.proyecto.clase.MVVM
             tipoServ = new ServicioGenerico<tipoaveria>(tallerEnt);
             estadoServ = new ServicioGenerico<estado>(tallerEnt);
             aveNueva = new averia();
+            tipoAve = new tipoaveria();
+            estadoAve = new estado();
         }
         public ListCollectionView listaAverias { get { return listaAver; } }
         public List<empleado> listaEmpleado { get { return empServ.getAll().ToList(); } }
@@ -56,6 +60,26 @@ namespace di.proyecto.clase.MVVM
             {
                 aveNueva = value;
                 OnPropertyChanged("averiaNueva");
+            }
+        }
+
+        public tipoaveria tipoSeleccionado
+        {
+            get { return tipoAve; }
+            set
+            {
+                tipoAve = value;
+                OnPropertyChanged("tipoSeleccionado");
+            }
+        }
+
+        public estado estadoSeleccionado
+        {
+            get { return estadoAve; }
+            set
+            {
+                estadoAve = value;
+                OnPropertyChanged("estadoSeleccionado");
             }
         }
 

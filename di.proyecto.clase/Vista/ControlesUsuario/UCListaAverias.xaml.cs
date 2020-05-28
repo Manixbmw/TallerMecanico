@@ -34,56 +34,15 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             mvAveria = new MVAveria(tallerEnt);
             DataContext = mvAveria;
             Filtro = new Predicate<object>(FiltroFechas);
-        }
-
-        private void CheckTipo_Checked(object sender, RoutedEventArgs e)
-        {
-            if (checkTipo.IsChecked == true)
-            {
-                checkTipo.IsChecked = false;
-                mvAveria.listaAverias.GroupDescriptions.Add(new PropertyGroupDescription("tipo"));
-            }
-            else
-            {
-                mvAveria.listaAverias.GroupDescriptions.Add(new PropertyGroupDescription("tipo"));
-            }
-        }
-
-        private void CheckTipo_Unchecked(object sender, RoutedEventArgs e)
-        {
-            mvAveria.listaAverias.GroupDescriptions.Clear();
-        }
-
-        private void CheckEstado_Checked(object sender, RoutedEventArgs e)
-        {
-            if (checkTipo.IsChecked == true)
-            {
-                checkTipo.IsChecked = false;
-                mvAveria.listaAverias.GroupDescriptions.Add(new PropertyGroupDescription("estado"));
-            }
-            else
-            {
-                mvAveria.listaAverias.GroupDescriptions.Add(new PropertyGroupDescription("estado"));
-            }
-        }
-
-        private void CheckEstado_Unchecked(object sender, RoutedEventArgs e)
-        {
-            mvAveria.listaAverias.GroupDescriptions.Clear();
-        }
-
-      
+        }      
 
         private void BtnFiltrarFechas_Click(object sender, RoutedEventArgs e)
         {
-
-
             criterios.Clear();
 
             if (FechaIni.SelectedDate !=null)
             {
-                criterios.Add(new Predicate<averia>(a => (a.fechaRecepcion != null) && a.fechaRecepcion.ToString().Contains(FechaIni.ToString())));
-                
+                criterios.Add(new Predicate<averia>(a => (a.fechaRecepcion != null) && a.fechaRecepcion.ToString().Contains(FechaIni.ToString())));                
 
                //criterios.Add(new Predicate<averia>(tallerEnt.averia.Where(x => x.fechaRecepcion >= FechaIni.SelectedDate.Value.Date && x.fechaRecepcion <= FechaFin.SelectedDate.Value.Date).ToList()));
 
@@ -109,5 +68,53 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             }
             return esta;
         }
+
+        private bool FiltroCombinado(object item) //Convertir el modeloarticulo, si el objeto no es nullo hacemos la conversion
+        {
+            bool esta = false;
+            averia ave;
+            if (item != null)
+            {
+                ave = (averia)item;
+                if (comboFiltroTipo.SelectedItem != null)
+                {
+                    if ((ave.tipoaveria != null) && (ave.tipoaveria.Equals(mvAveria.tipoSeleccionado))) //Filtrar Tipo
+                    {
+                        esta = true;
+                    }
+                }
+
+                if (comboFiltroEstado.SelectedItem != null)
+                {
+                    if ((ave.estado1 != null) && (ave.estado1.Equals(mvAveria.estadoSeleccionado))) //Filtrar Estado
+                    {
+                        esta = true;
+                    }
+                }
+
+
+            }
+
+
+            return esta;
+        }
+
+
+        private void ComboFiltroTipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dgListaAverias.Items.Filter = new Predicate<object>(FiltroCombinado);
+        }
+
+        private void ComboFiltroEstado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dgListaAverias.Items.Filter = new Predicate<object>(FiltroCombinado);
+        }
+
+        private void BtnReset_Click(object sender, RoutedEventArgs e)
+        {
+            dgListaAverias.Items.Filter = null;
+            dgListaAverias.Items.Refresh();
+        }
+
     }
 }
