@@ -116,5 +116,9 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             dgListaAverias.Items.Refresh();
         }
 
+        private void BtnFactura_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

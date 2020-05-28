@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:di.proyecto.clase"
         mc:Ignorable="d"
-        Background="DarkGray"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="MECHANICS" Height="650" Width="1500"  >
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Recursos/Logos/fondo.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="600*"/>
@@ -18,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <materialDesign:ColorZone Mode="Dark" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+        <materialDesign:ColorZone Mode="Dark" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Background="#E5303030">
             <Grid>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
@@ -31,7 +36,7 @@
                 </materialDesign:PopupBox>
             </Grid>
         </materialDesign:ColorZone >
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#FF303030">
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#E5303030">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="326*"/>

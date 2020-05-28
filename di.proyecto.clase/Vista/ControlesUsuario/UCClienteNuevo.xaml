@@ -10,7 +10,7 @@
     <ScrollViewer  HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="Auto">
        
     
-    <Grid>
+    <Grid Background="DarkGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="300"/>

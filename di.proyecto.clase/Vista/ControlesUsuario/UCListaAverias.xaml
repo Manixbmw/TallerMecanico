@@ -8,8 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="70">
+        <Grid DockPanel.Dock="Top" Background="DarkGray" Height="70">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -22,7 +23,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Text="LISTA DE AVERIAS" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
-            <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1,2,22,2" Width="198" >
 
                 <ComboBox x:Name="comboFiltroTipo" SelectionChanged="ComboFiltroTipo_SelectionChanged" IsEditable="True"  Text="Selecciona un tipo Averia"
                       Width="200"  Margin="10,5,10,0" ItemsSource="{Binding listaTipo}" DisplayMemberPath="nombre" SelectedItem="{Binding tipoSeleccionado}"/>
@@ -30,7 +31,7 @@
                 <ComboBox x:Name="comboFiltroEstado" SelectionChanged="ComboFiltroEstado_SelectionChanged" IsEditable="True"  Text="Selecciona un Estado"
                       Width="200"  Margin="10,5,10,0" ItemsSource="{Binding listaEstado}" DisplayMemberPath="nombre" SelectedItem="{Binding estadoSeleccionado}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="48,0,0,0" >
+            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="15,0,0,0" >
                 <DatePicker   Name="FechaIni"  Width="120"   Margin="5" material:HintAssist.Hint="Selecciona fecha"    />
                 <DatePicker   Name="FechaFin"  Width="120"   Margin="5" material:HintAssist.Hint="Selecciona fecha"    />
             </StackPanel>
@@ -43,6 +44,11 @@
               Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FF616161" Foreground="White"
               ToolTip="Reset" >
                 <material:PackIcon Kind="Refresh" Height="24" Width="24" />
+            </Button>
+            <Button  x:Name="btnFactura" Margin="10,0,0,0" Click="BtnFactura_Click"  Grid.Column="5"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FF616161" Foreground="White"
+              ToolTip="Generar Factura" >
+                <material:PackIcon Kind="Receipt" Height="24" Width="24" />
             </Button>
 
         </Grid>

@@ -411,6 +411,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Recursos\Logos\fondo.jpg" />
     <Resource Include="Recursos\Logos\Logo_Blanco.png" />
     <Resource Include="Recursos\Logos\Logo.png" />
     <Resource Include="Recursos\Iconos\facebook.png" />

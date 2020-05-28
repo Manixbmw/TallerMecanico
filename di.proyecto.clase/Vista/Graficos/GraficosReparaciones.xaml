@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:di.proyecto.clase.Vista.Graficos"
              mc:Ignorable="d" 
              d:DesignHeight="580" d:DesignWidth="840">
-    <DockPanel>
+    <DockPanel Background="DarkGray">
         <Grid DockPanel.Dock="Top" Height="70" >            
             
             <TextBlock Text="RESUMEN REPARACIONES POR MES" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>

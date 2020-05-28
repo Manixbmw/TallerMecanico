@@ -45,13 +45,9 @@ namespace di.proyecto.clase
             var menuAverias = new List<SubItem>();
             var item3 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
             menuAverias.Add(new SubItem("Nueva",new UCAveriaNueva(ent)));
-            menuAverias.Add(new SubItem("Gestion",new UCArbolAverias(ent)));
-            menuAverias.Add(new SubItem("Solucion"));
-            menuAverias.Add(new SubItem("Lista",new UCListaAverias(ent)));
-            menuAverias.Add(new SubItem("Factura"));
-            menuAverias.Add(new SubItem("Graficos",new GraficosReparaciones(ent)));
-
-
+            menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));           
+            menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));            
+            menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
 
             var menuGestion = new List<SubItem>();
             var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
@@ -63,8 +59,7 @@ namespace di.proyecto.clase
 
             var menuEmpleados = new List<SubItem>();
             var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
-            menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));
-            
+            menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));           
 
             
             
