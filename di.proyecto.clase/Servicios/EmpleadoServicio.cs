@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using di.proyecto.clase.Modelo;
 
+
 namespace di.proyecto.clase.Servicios
 
 {
@@ -31,6 +32,12 @@ namespace di.proyecto.clase.Servicios
         {
             empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
             return emp.id;
+        }
+
+        public int getRol(String user)
+        {
+            empleado emp = contexto.Set<empleado>().Where(e => e.usuario == user).First();            
+            return emp.rol;
         }
 
         /*

@@ -13,8 +13,7 @@ namespace di.proyecto.clase.MVVM
     public class MVEmpleado : MVBase
     {
         private tallerEntities tallerEnt;
-        private EmpleadoServicio empServ;
-        //Lista de modelos para trabajar con filtros en las tablas
+        private EmpleadoServicio empServ;     
         private ListCollectionView listaEmpl;
         private empleado emplNuevo;
         private empleado emplSelec;

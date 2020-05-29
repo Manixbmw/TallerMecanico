@@ -25,6 +25,7 @@
 
         <materialDesign:ColorZone Mode="Dark" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Background="#E5303030">
             <Grid>
+                
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button Content="Ajustes" x:Name="Ajustes" />

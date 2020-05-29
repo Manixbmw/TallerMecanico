@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using di.proyecto.clase.Cache;
 
 namespace di.proyecto.clase.Vista.Dialogos
 {
@@ -21,31 +22,37 @@ namespace di.proyecto.clase.Vista.Dialogos
 	/// Lógica de interacción para Login.xaml
 	/// </summary>
 	public partial class Login : Window
-
 	{
 		private tallerEntities tallerEnt;
 		private EmpleadoServicio empServ;
+        
 
-
-
-		public Login()
+        public Login()
 		{
 			InitializeComponent();
             tallerEnt = new tallerEntities();
             empServ = new EmpleadoServicio(tallerEnt);
+
 		}
 
 		private void BtnLogin_Click(object sender, RoutedEventArgs e)
 		{
 			string txt = username.Text;
 			string pass = password.Password;
-			if(!string.IsNullOrEmpty(txt) && !string.IsNullOrEmpty(pass))
+            //Cargamos en cache el Rol y el Usario
+            UserLoginCache.Rol = (empServ.getRol(txt));
+            UserLoginCache.User = (txt);
+
+            if (!string.IsNullOrEmpty(txt) && !string.IsNullOrEmpty(pass))
 			{
 				if (empServ.login(txt, pass) == true)
 				{
 					MainWindow ventanaPrincipal = new MainWindow(tallerEnt);
 					ventanaPrincipal.Show();
-					this.Close();
+                   
+                    
+
+                    this.Close();
 				}
 				else
 				{

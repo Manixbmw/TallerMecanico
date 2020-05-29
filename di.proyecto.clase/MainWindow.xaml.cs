@@ -1,4 +1,5 @@
 ﻿using BeautySolutions.View.ViewModel;
+using di.proyecto.clase.Cache;
 using di.proyecto.clase.Modelo;
 using di.proyecto.clase.Vista.ControlesUsuario;
 using di.proyecto.clase.Vista.Dialogos;
@@ -32,6 +33,10 @@ namespace di.proyecto.clase
             InitializeComponent();
             tallerEnt = ent;
 
+            int rol = UserLoginCache.Rol;
+
+            
+
             var menuVehiculos = new List<SubItem>();
             var item1 = new ItemMenu("Vehiculos", menuVehiculos, PackIconKind.Car);
             menuVehiculos.Add(new SubItem("Nuevo", new UCVehiculoNuevo(ent)));            
@@ -44,10 +49,10 @@ namespace di.proyecto.clase
 
             var menuAverias = new List<SubItem>();
             var item3 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
-            menuAverias.Add(new SubItem("Nueva",new UCAveriaNueva(ent)));
-            menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));           
-            menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));            
-            menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+            //menuAverias.Add(new SubItem("Nueva",new UCAveriaNueva(ent)));
+            //menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));           
+            //menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));            
+            //menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
 
             var menuGestion = new List<SubItem>();
             var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
@@ -59,7 +64,7 @@ namespace di.proyecto.clase
 
             var menuEmpleados = new List<SubItem>();
             var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
-            menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));           
+            //menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));           
 
             
             
@@ -69,7 +74,36 @@ namespace di.proyecto.clase
             Menu.Children.Add(new UserControlMenuItem(item4, this));
             Menu.Children.Add(new UserControlMenuItem(item5, this));
 
+            switch (rol)
+            {
+                //1 Empleado
+                case 1:
+                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
+                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
+                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
+                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+
+                    break;
+                //2 Encargado
+                case 2:
+                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
+                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
+                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
+                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+                    break;
+                //3 gerente
+                case 3:
+                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
+                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
+                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
+                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+                    menuEmpleados.Add(new SubItem("Gestion", new UCListaEmpleados(ent)));
+                    break;
+
+            }
         }
+
+        
 
         internal void SwichScreen(object sender)
         {
