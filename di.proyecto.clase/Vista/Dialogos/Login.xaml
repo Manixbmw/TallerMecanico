@@ -3,50 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
-        
+        xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"        
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         FocusManager.FocusedElement="{Binding ElementName=username}"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{x:Null}"
         BorderThickness="0"
-        Title="Login" Height="500" Width="400">
-    <StackPanel>
-        <material:Card Background="{DynamicResource MaterialDesignPaper}" Padding="10">
+        Title="Login" Height="387" Width="769">
+    <DockPanel>
+        <material:Card Background="#1b1b1b" Padding="10" >
             <Image Source="/Recursos/Logos/Logo_Blanco.png" Height="103"  HorizontalAlignment="Center" VerticalAlignment="Center" />
         </material:Card>
-        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="username" 
+        <Grid Background="#424242">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="LOGIN" Style="{StaticResource MaterialDesignHeadline3TextBlock}" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"  Margin="0,5,0,0"   />
+
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="username" Grid.Row="1"
                  material:HintAssist.Hint="Nombre de usuario" Margin="20" FontSize="18"  />
 
-           
-
-        <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Grid.Row="2"
                  material:HintAssist.Hint="Contraseña" Margin="20" FontSize="18"  x:Name="password" />
 
-        
+            <Button Margin="20" x:Name="btnLogin" Click="BtnLogin_Click" IsDefault="True" Background="#b71c1c" Foreground="White" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"  material:ButtonAssist.CornerRadius="5" 
+                    material:ShadowAssist.ShadowDepth="Depth3"
+                    Height="50" ToolTip="Login"  Grid.Row="3" BorderBrush="{x:Null}">
+                <TextBlock Text="Log in" FontSize="24" />
+            </Button>
 
-        <Button Margin="20" x:Name="btnLogin" Click="BtnLogin_Click" IsDefault="True"  Style="{StaticResource MaterialDesignRaisedButton}" Height="50" ToolTip="Button">
-            <TextBlock Text="Login" FontSize="24" />
-        </Button>
-
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="btnGoogle" Height="64" Width="64" Margin="20,0,0,20"
-                    Background="#40080C">
-                <Image Source="/Recursos/Iconos/google.png" />
-            </Button>
-            <Button x:Name="btnFacebook" Height="64" Width="64" Margin="30,0,0,20"
-                    Background="#40080C">
-                <Image Source="/Recursos/Iconos/facebook.png" />
-            </Button>
-            <Button x:Name="btnTwitter" Height="64" Width="64" Margin="30,0,0,20"
-                    Background="#40080C">
-                <Image Source="/Recursos/Iconos/twitter.png" />
-            </Button>
-            <Button x:Name="btnWindows" Height="64" Width="64" Margin="30,0,0,20" Click="BtnWindows_Click"
-                    Background="#40080C">
+            <Button x:Name="btnWindows" Height="10" Width="10"  Click="BtnWindows_Click" Grid.Row="4" 
+                    Background="#40080C" HorizontalAlignment="Right" Margin="0,0,60,0">
                 <Image Source="/Recursos/Iconos/windows.png" />
             </Button>
-        </StackPanel>
-    </StackPanel>
+            <Button  x:Name="btnOlvido" Width="231" Grid.Row="3" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnOlvido_Click" Margin="130,70,131,0" Grid.RowSpan="2">
+                <TextBlock  Text="¿Olvidó su nombre de usuario o contraseña?"  Foreground="White"  TextDecorations="Underline" FontSize="10" FontWeight="Normal" HorizontalAlignment="Center" Width="201" />
+            </Button>
+
+        </Grid>
+
+    </DockPanel>
 </Window>

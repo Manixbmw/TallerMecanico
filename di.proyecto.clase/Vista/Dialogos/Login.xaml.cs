@@ -40,7 +40,7 @@ namespace di.proyecto.clase.Vista.Dialogos
 			string txt = username.Text;
 			string pass = password.Password;
             //Cargamos en cache el Rol y el Usario
-            UserLoginCache.Rol = (empServ.getRol(txt));
+            UserLoginCache.Rol = (empServ.getRol(txt, pass));
             UserLoginCache.User = (txt);
 
             if (!string.IsNullOrEmpty(txt) && !string.IsNullOrEmpty(pass))
@@ -73,6 +73,11 @@ namespace di.proyecto.clase.Vista.Dialogos
             this.Close();
 
 
+        }
+
+        private void BtnOlvido_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Contacta con tu Gerente");
         }
     }
 }

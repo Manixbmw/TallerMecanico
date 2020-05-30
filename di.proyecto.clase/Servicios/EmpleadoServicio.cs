@@ -30,15 +30,12 @@ namespace di.proyecto.clase.Servicios
 
         public int getLastId()
         {
-            empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
+           
+                empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
             return emp.id;
         }
 
-        public int getRol(String user)
-        {
-            empleado emp = contexto.Set<empleado>().Where(e => e.usuario == user).First();            
-            return emp.rol;
-        }
+       
 
         /*
          * Método que comprueba las credenciales del usuario en la base de datos
@@ -65,6 +62,28 @@ namespace di.proyecto.clase.Servicios
 
             return correcto;
         }
+
+        public int getRol(String user, String pass)
+        {
+            empleado emp;
+            if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pass))
+            {
+                if (login(user, pass) == true)
+                {
+                    emp = contexto.Set<empleado>().Where(e => e.usuario == user).First();
+                    return emp.rol;
+                }
+                else
+                {
+                    return 0;
+                }                  
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         /*
          * Comprueba si en la base de datos existe un usuario con ese login
          * El login de un usuario debe de ser único
