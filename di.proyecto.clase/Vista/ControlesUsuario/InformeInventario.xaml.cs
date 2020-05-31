@@ -42,7 +42,7 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = data;
             reporInventario.LocalReport.DataSources.Add(reportDataSource1);
-            reporInventario.LocalReport.ReportPath = "../../Informes/Report2.rdlc";
+            reporInventario.LocalReport.ReportPath = "../../Informes/RepInventario.rdlc";
             reporInventario.RefreshReport();
         }
 

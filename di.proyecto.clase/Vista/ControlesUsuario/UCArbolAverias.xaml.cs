@@ -40,6 +40,7 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             {               
                 averia ave = (averia)treeAverias.SelectedItem;
                 mvAveria.averiaNueva = ave;
+                dgPiezasAve.ItemsSource = ave.piezas_averia;
 
             }
         }

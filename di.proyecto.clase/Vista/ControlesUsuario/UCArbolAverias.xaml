@@ -42,10 +42,11 @@
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
                 <ColumnDefinition Width="300"/>
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -57,7 +58,7 @@
                 <RowDefinition Height="Auto"/>
 
             </Grid.RowDefinitions>
-            <material:Card  Background="{DynamicResource MaterialDesignPaper}"  Padding="10" Grid.ColumnSpan="4">
+            <material:Card  Background="{DynamicResource MaterialDesignPaper}"  Padding="10" Grid.ColumnSpan="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="500"/>
@@ -75,7 +76,7 @@
                         </Button>
                     </StackPanel>
                     <TextBlock Text="Productos Utilizados" 
-                                Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Column="1" Margin="144,10,-285,0" />
+                                Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Column="1" Margin="230,10,-373,0" />
 
                 </Grid>
 
@@ -174,13 +175,33 @@
                     AcceptsReturn="True"
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto"
-                    material:HintAssist.Hint="Descripcion &#10;de la averia"
+                    material:HintAssist.Hint="Descripcion de la averia"
                     x:Name="txtDescrip"
                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtDescrip_TextChanged" />
             </StackPanel>
+            <ComboBox x:Name="comboProductos" DisplayMemberPath="nombre" material:HintAssist.Hint="Selecciona el producto" 
+                      
+                      Grid.Row="1" Grid.Column="3"  FontSize="16"
+                  Margin="20" ItemsSource="{Binding listaProductos}" IsTextSearchEnabled="True" IsEditable="True" />
+
+            <StackPanel Grid.Row="1"  Grid.Column="3"   Grid.RowSpan="2" Orientation="Horizontal">
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"   MaxLength="3"
+					  
+				  PreviewTextInput="NumberValidationTextBox" Width="100"
+				  x:Name="txtCantidad" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
+				  material:HintAssist.Hint="Cantidad" Margin="20,62,20,57" HorizontalAlignment="Left" />
+                
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"   MaxLength="2"
+					  Text="{Binding averiaNueva.horas, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				  PreviewTextInput="NumberValidationTextBox" Margin="0,62,20,56"
+				  x:Name="txtIvaPieza" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
+				  material:HintAssist.Hint="%IVA"  />
+            </StackPanel>
+
+            
 
             <Separator HorizontalAlignment="Left"  Grid.Column="2" Grid.RowSpan="2" Height="100" VerticalAlignment="Top" Width="368" 
-                       RenderTransformOrigin="0.5,0.5" Background="Black" Margin="19,54,0,0" Grid.ColumnSpan="2" Grid.Row="2">
+                       RenderTransformOrigin="0.5,0.5" Background="Black" Margin="47,52,0,0" Grid.ColumnSpan="2" Grid.Row="2">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -190,6 +211,16 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
+            <DataGrid  x:Name="dgPiezasAve" Grid.Column="3" HorizontalAlignment="Left" AutoGenerateColumns="False"   CanUserAddRows="False" Height="225" 
+                      Margin="20,53,0,0" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="260">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding productos.nombre}" />
+                    <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Añadir" Grid.Column="3" HorizontalAlignment="Left" Foreground="White"
+                    Margin="205,78,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.4,0.219" Background="#b71c1c" BorderBrush="{x:Null}" Grid.RowSpan="2"/>
         </Grid>
     </DockPanel>
 </UserControl>

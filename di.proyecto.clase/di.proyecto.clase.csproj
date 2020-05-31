@@ -423,7 +423,7 @@
     <Resource Include="Recursos\Iconos\windows.png" />
     <Resource Include="Recursos\Iconos\google.png" />
     <EmbeddedResource Include="Informes\Report1.rdlc" />
-    <EmbeddedResource Include="Informes\Report2.rdlc" />
+    <EmbeddedResource Include="Informes\RepInventario.rdlc" />
     <EmbeddedResource Include="Informes\ReportInventario.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

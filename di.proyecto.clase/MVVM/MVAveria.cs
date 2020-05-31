@@ -22,6 +22,8 @@ namespace di.proyecto.clase.MVVM
         private ServicioGenerico<vehiculo> vehServ;
         private ServicioGenerico<tipoaveria> tipoServ;
         private ServicioGenerico<estado> estadoServ;
+        private ServicioGenerico<productos> producServ;
+        private ServicioGenerico<piezas_averia> pieAveServ;
         private ListCollectionView listaAver;
         private String txtFech;
         public bool editar { get; set; }
@@ -42,6 +44,8 @@ namespace di.proyecto.clase.MVVM
             vehServ = new ServicioGenerico<vehiculo>(tallerEnt);
             tipoServ = new ServicioGenerico<tipoaveria>(tallerEnt);
             estadoServ = new ServicioGenerico<estado>(tallerEnt);
+            producServ = new ServicioGenerico<productos>(tallerEnt);
+            pieAveServ = new ServicioGenerico<piezas_averia>(tallerEnt);
             aveNueva = new averia();
             tipoAve = new tipoaveria();
             estadoAve = new estado();
@@ -52,6 +56,8 @@ namespace di.proyecto.clase.MVVM
         public List<vehiculo> listaVehiculo { get { return vehServ.getAll().ToList(); } }
         public List<tipoaveria> listaTipo { get { return tipoServ.getAll().ToList(); } }
         public List<estado> listaEstado { get { return estadoServ.getAll().ToList(); } }
+        public List<productos> listaProductos { get { return producServ.getAll().ToList(); } }
+        public List<piezas_averia> listaPiezasAveria { get { return pieAveServ.getAll().ToList(); } }
 
         public averia averiaNueva
         {
