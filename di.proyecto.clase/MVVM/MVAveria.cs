@@ -14,7 +14,10 @@ namespace di.proyecto.clase.MVVM
     {
         private tallerEntities tallerEnt;
         private AveriaServicio aveServ;
+        private Pieza_averiaServicio pieServ;       
         private averia aveNueva;
+        private averia aveSelect;
+        private piezas_averia piNueva;
         private tipoaveria tipoAve;
         private estado estadoAve;
         private ServicioGenerico<empleado> empServ;
@@ -38,6 +41,7 @@ namespace di.proyecto.clase.MVVM
         private void inicializa()
         {           
             aveServ = new AveriaServicio(tallerEnt);
+            pieServ = new Pieza_averiaServicio(tallerEnt);
             listaAver = new ListCollectionView(aveServ.getAll().ToList());
             empServ = new ServicioGenerico<empleado>(tallerEnt);
             clieServ = new ServicioGenerico<cliente>(tallerEnt);
@@ -46,7 +50,8 @@ namespace di.proyecto.clase.MVVM
             estadoServ = new ServicioGenerico<estado>(tallerEnt);
             producServ = new ServicioGenerico<productos>(tallerEnt);
             pieAveServ = new ServicioGenerico<piezas_averia>(tallerEnt);
-            aveNueva = new averia();
+            aveNueva = new averia();            
+            piNueva = new piezas_averia();
             tipoAve = new tipoaveria();
             estadoAve = new estado();
         }
@@ -68,6 +73,26 @@ namespace di.proyecto.clase.MVVM
                 OnPropertyChanged("averiaNueva");
             }
         }
+        public averia averiaSeleccionada
+        {
+            get { return aveSelect; }
+            set
+            {
+                aveSelect = value; OnPropertyChanged("averiaSeleccionada");
+            }
+        }
+
+
+        public piezas_averia piezaNueva
+        {
+            get { return piNueva; }
+            set
+            {
+                piNueva = value;
+                OnPropertyChanged("piezaNueva");
+            }
+        }
+
 
         public tipoaveria tipoSeleccionado
         {
@@ -119,6 +144,59 @@ namespace di.proyecto.clase.MVVM
             }
 
             return correcto;
+        }
+
+        public bool editaAveria()
+        {
+            bool correcto = true;
+            aveServ.edit(averiaSeleccionada);
+            try
+            {
+                aveServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+        public bool addPieza()
+        {
+            bool correcto = true;
+            aveServ.add(averiaSeleccionada);
+            try
+            {
+                aveServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+
+        public bool guardaPieza()
+        {
+            bool correcto = true;
+            pieServ.add(piezaNueva);
+            piezaNueva.idAveria = averiaSeleccionada.id;          
+            
+            try
+            {
+                aveServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+            
         }
         public String textoFiltroFechaIni
         {

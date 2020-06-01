@@ -29,9 +29,8 @@ namespace di.proyecto.clase.Servicios
         }
 
         public int getLastId()
-        {
-           
-                empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
+        {           
+            empleado emp = contexto.Set<empleado>().OrderByDescending(a => a.id).FirstOrDefault();
             return emp.id;
         }
 
@@ -77,6 +76,26 @@ namespace di.proyecto.clase.Servicios
                 {
                     return 0;
                 }                  
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public int getId(String user, String pass)
+        {
+            empleado emp;
+            if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pass))
+            {
+                if (login(user, pass) == true)
+                {
+                    emp = contexto.Set<empleado>().Where(e => e.usuario == user).First();
+                    return emp.id;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             else
             {

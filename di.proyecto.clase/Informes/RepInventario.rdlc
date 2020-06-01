@@ -839,21 +839,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idProveedor">
+                        <Textbox Name="proveedor">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!idProveedor.Value</Value>
+                                  <Value>=Fields!proveedor.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>idProveedor</rd:DefaultName>
+                          <rd:DefaultName>proveedor</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1119,7 +1119,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>4.19134in</Height>
+        <Height>4.17051in</Height>
         <Style />
       </Body>
       <Width>7.30592in</Width>
@@ -1164,7 +1164,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.44662cm</Top>
-              <Left>12.08766cm</Left>
+              <Left>11.50558cm</Left>
               <Height>0.6cm</Height>
               <Width>4.61667cm</Width>
               <ZIndex>1</ZIndex>

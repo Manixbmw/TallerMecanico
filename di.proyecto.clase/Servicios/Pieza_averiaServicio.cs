@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace di.proyecto.clase.Servicios
 {
-    class AveriaServicio : ServicioGenerico<averia>
+    class Pieza_averiaServicio: ServicioGenerico<piezas_averia>
     {
         private DbContext contexto;
 
-        public AveriaServicio(DbContext context) : base(context)
+        public Pieza_averiaServicio(DbContext context) : base(context)
         {
             contexto = context;
         }
 
         public int getLastId()
         {
-            averia art = contexto.Set<averia>().OrderByDescending(a => a.id).FirstOrDefault();
-            return art.id;
+            piezas_averia pie = contexto.Set<piezas_averia>().OrderByDescending(a => a.idAveria).FirstOrDefault();
+            return pie.idAveria;
         }
-        
+
     }
 }

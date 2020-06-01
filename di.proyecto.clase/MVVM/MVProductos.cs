@@ -16,7 +16,7 @@ namespace di.proyecto.clase.MVVM
         private ProductoServicio prodServ;
         private productos prdNuevo;
         private productos prdSel;
-        private int txtFiltro;
+        private string txtFiltro;
         private string txtNombre;
         private ListCollectionView listaProduc;
         private ServicioGenerico<tipoproducto> tipoProServ;
@@ -57,8 +57,8 @@ namespace di.proyecto.clase.MVVM
             }
         }
 
-        //Texto que filtra la tabla en funcion del nombre del modelo
-        public int textoFiltroID
+       
+        public string textoFiltroID
         {
             get { return txtFiltro; }
             set

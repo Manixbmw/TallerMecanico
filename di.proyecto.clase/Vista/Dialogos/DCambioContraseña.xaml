@@ -1,0 +1,41 @@
+﻿<Window x:Class="di.proyecto.clase.Vista.Dialogos.DCambioContraseña"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
+        mc:Ignorable="d"
+        Title="Cambio de contraseña" Height="537" Width="389">
+    <Grid Background="#424242">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Cambio de contraseña" Style="{StaticResource MaterialDesignHeadline3TextBlock}" Foreground="White"
+                   FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"  Margin="0,5,0,0"   />
+
+        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1"
+                 material:HintAssist.Hint="Antigua Contraseña" Margin="20" FontSize="18"  x:Name="passVieja" Foreground="White" />
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2"
+                  Text="{Binding empleadoContra.password, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                 material:HintAssist.Hint="Nueva Contraseña" Margin="20,20,20,10" FontSize="18"  x:Name="passNueva" Foreground="White" />
+        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3"
+                 material:HintAssist.Hint="Confirma Contraseña" Margin="20,10,20,20" FontSize="18"  x:Name="passRepe" Foreground="White" />
+        
+        <Button Margin="20" x:Name="btnCambiar" Click="BtnCambiar_Click" IsDefault="True" Background="#b71c1c" Foreground="White" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"  material:ButtonAssist.CornerRadius="5" 
+                    material:ShadowAssist.ShadowDepth="Depth3"
+                    Height="50" ToolTip="Cambiar"  Grid.Row="4" BorderBrush="{x:Null}">
+            <TextBlock Text="Cambiar contraseña" FontSize="24" />
+        </Button>
+        <TextBox    Text="{Binding Password}"  Grid.Row="5"  
+                   x:Name="prueba" 
+                    FontSize="35"/>
+    </Grid>
+</Window>

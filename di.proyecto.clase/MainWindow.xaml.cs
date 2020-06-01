@@ -49,15 +49,15 @@ namespace di.proyecto.clase
 
             var menuAverias = new List<SubItem>();
             var item3 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
-            //menuAverias.Add(new SubItem("Nueva",new UCAveriaNueva(ent)));
-            //menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));           
-            //menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));            
-            //menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+            menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
+            menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
+            menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
+            menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
 
             var menuGestion = new List<SubItem>();
             var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
             menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaPedidos(ent)));           
-            menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
+            //menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
             menuGestion.Add(new SubItem("Informe",new InformeInventario(ent)));
             menuGestion.Add(new SubItem("Movimiento de Productos"));
            
@@ -78,25 +78,17 @@ namespace di.proyecto.clase
             {
                 //1 Empleado
                 case 1:
-                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
-                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
-                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
-                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+                    menuGestion.Add(new SubItem("Inventario", new UCListaProductos(ent)));
 
                     break;
                 //2 Encargado
                 case 2:
-                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
-                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
-                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
-                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+                    menuGestion.Add(new SubItem("Inventario", new UCListaProductos(ent)));
+
                     break;
                 //3 gerente
                 case 3:
-                    menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
-                    menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
-                    menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
-                    menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+                    menuGestion.Add(new SubItem("Inventario", new UCListaProductos(ent)));
                     menuEmpleados.Add(new SubItem("Gestion", new UCListaEmpleados(ent)));
                     break;
 
@@ -121,6 +113,12 @@ namespace di.proyecto.clase
             Login login = new Login();
             login.Show();
             this.Close();
+        }
+
+        private void CambiarContra_Click(object sender, RoutedEventArgs e)
+        {
+            DCambioContraseña diag = new DCambioContraseña(tallerEnt);
+            diag.ShowDialog();
         }
     }
 }

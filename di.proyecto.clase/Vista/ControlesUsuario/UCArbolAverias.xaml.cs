@@ -25,6 +25,7 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
     {
         tallerEntities tallerEnt;
         private MVAveria mvAveria;
+        private averia ave;
 
         public UCArbolAverias(tallerEntities ent)
         {
@@ -38,9 +39,9 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
         {
             if (treeAverias.SelectedItem is averia)
             {               
-                averia ave = (averia)treeAverias.SelectedItem;
-                mvAveria.averiaNueva = ave;
-                dgPiezasAve.ItemsSource = ave.piezas_averia;
+                ave = (averia)treeAverias.SelectedItem;
+                mvAveria.averiaSeleccionada = ave;
+                dgPiezasAve.ItemsSource = ave.piezas_averia.ToList();
 
             }
         }
@@ -50,24 +51,32 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void ComboCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (mvAveria.editaAveria())
+            {
+                MessageBox.Show("Averia editada correctamente", "GESTIÓN DE AVERIAS", MessageBoxButton.OK, MessageBoxImage.Information);
+               
+            }
+            else
+            {
+                MessageBox.Show("ERROR!!! NO SE HA PODIDO EDITAR", "GESTIÓN DE AVERIAS", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void BtnAnyadirProducto_Click(object sender, RoutedEventArgs e)
         {
+            if (mvAveria.guardaPieza())
+            {
+                MessageBox.Show("Pieza añadida correctamente", "GESTIÓN DE PIEZAS_AVERIAS", MessageBoxButton.OK, MessageBoxImage.Information);
+                ave.piezas_averia.ToList().Add(mvAveria.piezaNueva);
+                dgPiezasAve.ItemsSource = ave.piezas_averia.ToList();
 
-        }
-
-        private void TxtObservaciones_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TxtDescrip_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            }
+            else
+            {
+                MessageBox.Show("ERROR!!! NO SE HA PODIDO AÑADIR", "GESTIÓN DE PIEZAS_AVERIAS", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
+using System.Windows.Data;using di.proyecto.clase.Cache;
 
 namespace di.proyecto.clase.MVVM
 {
@@ -16,7 +16,8 @@ namespace di.proyecto.clase.MVVM
         private EmpleadoServicio empServ;     
         private ListCollectionView listaEmpl;
         private empleado emplNuevo;
-        private empleado emplSelec;
+        private empleado emplSelec;       
+        private empleado emplContra;       
         private ServicioGenerico<rol> rolServ;
         public bool editar { get; set; }
 
@@ -28,6 +29,8 @@ namespace di.proyecto.clase.MVVM
             listaEmpl = new ListCollectionView(empServ.getAll().ToList());            
             rolServ = new ServicioGenerico<rol>(tallerEnt);
             emplNuevo = new empleado();
+            emplSelec = new empleado();
+            emplContra = new empleado();
 
         }
         public ListCollectionView listaEmpleados { get { return listaEmpl; } }
@@ -43,6 +46,8 @@ namespace di.proyecto.clase.MVVM
             }
         }
 
+       
+
         public empleado empleadoSeleccionado
         {
             get { return emplSelec; }
@@ -51,6 +56,17 @@ namespace di.proyecto.clase.MVVM
                 emplSelec = value; OnPropertyChanged("empleadoSeleccionado");
             }
         }
+
+        public empleado empleadoContra
+        {
+            get { return emplContra; }
+            set
+            {
+                emplContra = value; OnPropertyChanged("empleadoContra");
+            }
+        }
+
+        
 
         public bool guarda()
         {
@@ -88,6 +104,27 @@ namespace di.proyecto.clase.MVVM
         {
             bool correcto = true;
             empServ.edit(empleadoSeleccionado);
+            try
+            {
+                empServ.save();
+            }
+            catch (DbUpdateException dbex)
+            {
+                correcto = false;
+                System.Console.WriteLine(dbex.StackTrace);
+                System.Console.WriteLine(dbex.InnerException);
+            }
+            return correcto;
+        }
+
+        public bool editarContra()
+        {
+            bool correcto = true;
+            //empServ.edit(empleadoContra);
+            //var original = empServ.SQLQuery("UPDATE  taller.empleado SET password= '"+UserLoginCache.PasswordNueva+"'WHERE nombre = '"+ UserLoginCache.User );
+            var emple = tallerEnt.empleado.First(a => a.usuario == UserLoginCache.User);
+            emple.password = empleadoContra.password;
+            empServ.edit(emple);
             try
             {
                 empServ.save();

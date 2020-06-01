@@ -11,16 +11,20 @@ namespace di.proyecto.clase.Modelo
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class piezas_averia
     {
+
         public int idAveria { get; set; }
         public int idProducto { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner la cantidad")]
         public Nullable<int> cantidad { get; set; }
         public Nullable<float> IVA { get; set; }
         public Nullable<float> precioTotal { get; set; }
-    
+        [Required(ErrorMessage = "Es obligatorio poner averia ")]
         public virtual averia averia { get; set; }
+        [Required(ErrorMessage = "Es obligatorio poner el producto")]
         public virtual productos productos { get; set; }
     }
 }

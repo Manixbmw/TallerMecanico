@@ -57,7 +57,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="comboEmpleado" DisplayMemberPath="usuario" material:HintAssist.Hint=" Usuario Empleaddo" Grid.Row="1" Grid.Column="0"  FontSize="20"
+        <ComboBox x:Name="comboEmpleado" DisplayMemberPath="usuario" material:HintAssist.Hint=" Usuario Empleado" Grid.Row="1" Grid.Column="0"  FontSize="20"
                    SelectedItem="{Binding averiaNueva.empleado, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                   Margin="20" ItemsSource="{Binding listaEmpleado}" IsTextSearchEnabled="True" IsEditable="True" />
 

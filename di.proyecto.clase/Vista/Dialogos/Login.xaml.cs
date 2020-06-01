@@ -32,7 +32,6 @@ namespace di.proyecto.clase.Vista.Dialogos
 			InitializeComponent();
             tallerEnt = new tallerEntities();
             empServ = new EmpleadoServicio(tallerEnt);
-
 		}
 
 		private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -42,15 +41,14 @@ namespace di.proyecto.clase.Vista.Dialogos
             //Cargamos en cache el Rol y el Usario
             UserLoginCache.Rol = (empServ.getRol(txt, pass));
             UserLoginCache.User = (txt);
+            UserLoginCache.Password = (pass);
 
             if (!string.IsNullOrEmpty(txt) && !string.IsNullOrEmpty(pass))
 			{
 				if (empServ.login(txt, pass) == true)
 				{
 					MainWindow ventanaPrincipal = new MainWindow(tallerEnt);
-					ventanaPrincipal.Show();
-                   
-                    
+					ventanaPrincipal.Show();                                
 
                     this.Close();
 				}
@@ -63,17 +61,7 @@ namespace di.proyecto.clase.Vista.Dialogos
 			{
 				MessageBox.Show("Rellena los huecos");
 			}
-
-		}
-
-        private void BtnWindows_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow menu = new MainWindow(tallerEnt);
-            menu.Show();
-            this.Close();
-
-
-        }
+		}        
 
         private void BtnOlvido_Click(object sender, RoutedEventArgs e)
         {

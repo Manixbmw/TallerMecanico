@@ -69,10 +69,10 @@
                     </Grid.RowDefinitions>
                     <TextBlock  Grid.Column="0" Grid.Row="0" Text="Averias" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
                     <StackPanel Grid.Column="2" Margin="0,0,0,50">
-                        <Button    HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                        <Button   x:Name="btnGuardar" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Click="BtnGuardar_Click"
                           Width="50" material:RippleAssist.IsCentered="True" Height="50">
                             <material:PackIcon Kind="ContentSave" Width="50" Height="50"
-                                           Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                              Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Button>
                     </StackPanel>
                     <TextBlock Text="Productos Utilizados" 
@@ -82,8 +82,8 @@
 
             </material:Card>
             <ComboBox x:Name="comboCliente"    ItemsSource="{Binding listaCliente}" 
-                       SelectedItem="{Binding averiaNueva.cliente ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
-                  FontSize="16" SelectionChanged="ComboCliente_SelectionChanged"
+                       SelectedItem="{Binding averiaSeleccionada.cliente ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                  FontSize="16" 
                    material:HintAssist.Hint="Cliente" Grid.Row="1" Grid.Column="1" Margin="20" Background="Transparent">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -96,47 +96,47 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox x:Name="comboEmpleado" DisplayMemberPath="usuario" material:HintAssist.Hint=" Usuario del Empleaddo" 
-                      SelectedItem="{Binding averiaNueva.empleado,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged }"
+            <ComboBox x:Name="comboEmpleado" DisplayMemberPath="nombre" material:HintAssist.Hint=" Usuario del Empleado" 
+                      SelectedItem="{Binding averiaSeleccionada.empleado,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged }"
                       Grid.Row="1" Grid.Column="0"  FontSize="16"
                   Margin="20" ItemsSource="{Binding listaEmpleado}" IsTextSearchEnabled="True" IsEditable="True" />
 
             <ComboBox x:Name="comboTipoAveria" DisplayMemberPath="nombre" material:HintAssist.Hint="Tipo de Averia"
-                      SelectedItem="{Binding averiaNueva.tipoaveria ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding averiaSeleccionada.tipoaveria ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
                       Grid.Row="2" Grid.Column="0"  FontSize="16"
                   Margin="20" ItemsSource="{Binding listaTipo}" IsTextSearchEnabled="True" IsEditable="True" />
 
             <ComboBox x:Name="comboEstado" DisplayMemberPath="nombre" material:HintAssist.Hint="Estado de la Averia"
-                      SelectedItem="{Binding averiaNueva.estado1 ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding averiaSeleccionada.estado1 ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
                       Grid.Row="2" Grid.Column="1"  FontSize="16"
                   Margin="20" ItemsSource="{Binding listaEstado}" IsTextSearchEnabled="True" IsEditable="True" />
 
             <DatePicker  Grid.Row="3" x:Name="dateFechaMatri" Foreground="{DynamicResource MaterialDesignPaper}"
-                        SelectedDate="{Binding averiaNueva.fechaRecepcion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
+                        SelectedDate="{Binding averiaSeleccionada.fechaRecepcion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
                  material:HintAssist.Hint="Fecha de entrada" Margin="20" FontSize="16"  />
 
             <DatePicker   Grid.Column="1" Grid.Row="3" x:Name="dateFechaSoluci" Foreground="{DynamicResource MaterialDesignPaper}"
-                        SelectedDate="{Binding averiaNueva.fechaSolucion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
+                        SelectedDate="{Binding averiaSeleccionada.fechaSolucion,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"                        
                  material:HintAssist.Hint="Fecha de Solucion" Margin="20" FontSize="16"  />
 
             <StackPanel Grid.Row="4"  Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" >
                 <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="5"  Grid.Column="2" MaxLength="2"
-					  Text="{Binding averiaNueva.IVA, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
-				  PreviewTextInput="NumberValidationTextBox"
+					  Text="{Binding averiaSeleccionada.IVA, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+				  PreviewTextInput="NumberValidationTextBox" Height="50" Width="50"
 				  x:Name="txtIVA" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
-				  material:HintAssist.Hint="%IVA" Margin="20" />
+				  material:HintAssist.Hint="%IVA" Margin="20,10" />
 
                 <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="5"  Grid.Column="2" MaxLength="3"
-					  Text="{Binding averiaNueva.horas, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
-				  PreviewTextInput="NumberValidationTextBox"
+					  Text="{Binding averiaSeleccionada.horas, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+				  PreviewTextInput="NumberValidationTextBox" Height="50" Width="50"
 				  x:Name="txtHoras" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
-				  material:HintAssist.Hint="Horas" Margin="20" />
+				  material:HintAssist.Hint="Horas" Margin="20,10" />
 
             </StackPanel>
 
             <StackPanel Grid.Row="4"  Grid.Column="0"  Margin="10"  >
                 <TextBox            
-                    Text="{Binding averiaNueva.observaciones ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding averiaSeleccionada.observaciones ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
                     Background="Transparent"
                     Foreground="White"
                     FontSize="15"                
@@ -147,11 +147,11 @@
                     VerticalScrollBarVisibility="Auto"
                     material:HintAssist.Hint="Observaciones"
                     x:Name="txtObservaciones"
-                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtObservaciones_TextChanged" />
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"  />
             </StackPanel>
             <StackPanel Grid.Row="4"  Grid.Column="1"  Margin="10"  >
                 <TextBox            
-                    Text="{Binding averiaNueva.solucion ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding averiaSeleccionada.solucion ,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
                     Background="Transparent"
                     Foreground="White"
                     FontSize="15"                
@@ -162,11 +162,11 @@
                     VerticalScrollBarVisibility="Auto"
                     material:HintAssist.Hint="Solucion"
                     x:Name="txtSolucion"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtObservaciones_TextChanged" />
+                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"  />
             </StackPanel>
             <StackPanel Grid.Row="1"  Grid.Column="2" Grid.RowSpan="3" Margin="10"  >
                 <TextBox        
-                    Text="{Binding averiaNueva.descripcion ,  ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding averiaSeleccionada.descripcion ,  ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
                     Background="Transparent"
                     Foreground="White"
                     FontSize="15"                
@@ -177,22 +177,22 @@
                     VerticalScrollBarVisibility="Auto"
                     material:HintAssist.Hint="Descripcion de la averia"
                     x:Name="txtDescrip"
-                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" TextChanged="TxtDescrip_TextChanged" />
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
             </StackPanel>
             <ComboBox x:Name="comboProductos" DisplayMemberPath="nombre" material:HintAssist.Hint="Selecciona el producto" 
-                      
+                       SelectedItem="{Binding piezaNueva.productos,ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged }"
                       Grid.Row="1" Grid.Column="3"  FontSize="16"
                   Margin="20" ItemsSource="{Binding listaProductos}" IsTextSearchEnabled="True" IsEditable="True" />
 
             <StackPanel Grid.Row="1"  Grid.Column="3"   Grid.RowSpan="2" Orientation="Horizontal">
                 <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"   MaxLength="3"
-					  
+					  Text="{Binding piezaNueva.cantidad, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
 				  PreviewTextInput="NumberValidationTextBox" Width="100"
 				  x:Name="txtCantidad" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
 				  material:HintAssist.Hint="Cantidad" Margin="20,62,20,57" HorizontalAlignment="Left" />
                 
                 <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"   MaxLength="2"
-					  Text="{Binding averiaNueva.horas, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					  Text="{Binding piezaNueva.IVA, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}"
 				  PreviewTextInput="NumberValidationTextBox" Margin="0,62,20,56"
 				  x:Name="txtIvaPieza" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="16"
 				  material:HintAssist.Hint="%IVA"  />
@@ -216,10 +216,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding productos.nombre}" />
                     <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}" />
-
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="Añadir" Grid.Column="3" HorizontalAlignment="Left" Foreground="White"
+            <Button Content="Añadir" x:Name="btnAnyadirProducto" Grid.Column="3" HorizontalAlignment="Left" Foreground="White" Click="BtnAnyadirProducto_Click"
                     Margin="205,78,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.4,0.219" Background="#b71c1c" BorderBrush="{x:Null}" Grid.RowSpan="2"/>
         </Grid>
     </DockPanel>

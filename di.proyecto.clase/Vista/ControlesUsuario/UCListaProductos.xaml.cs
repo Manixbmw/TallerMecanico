@@ -55,10 +55,14 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
                 prod = (productos)item;
                 if (!string.IsNullOrEmpty(txtFiltroID.Text)) //Si hemos escrito algo en el campo de texto
                 {                   
-                    if (((prod.idProducto.ToString() != null) && (prod.idProducto.ToString().StartsWith(mvProductos.textoFiltroID.ToString()))))
+                    if (((prod.idProducto.ToString() != null) && (prod.idProducto.ToString().StartsWith(mvProductos.textoFiltroID))))
                     {
                         esta = true;
                     }
+                }
+                else 
+                {
+                    esta = true;
                 }
 
             }

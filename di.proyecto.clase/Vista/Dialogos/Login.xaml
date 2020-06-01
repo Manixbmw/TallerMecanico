@@ -39,10 +39,7 @@
                 <TextBlock Text="Log in" FontSize="24" />
             </Button>
 
-            <Button x:Name="btnWindows" Height="10" Width="10"  Click="BtnWindows_Click" Grid.Row="4" 
-                    Background="#40080C" HorizontalAlignment="Right" Margin="0,0,60,0">
-                <Image Source="/Recursos/Iconos/windows.png" />
-            </Button>
+            
             <Button  x:Name="btnOlvido" Width="231" Grid.Row="3" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnOlvido_Click" Margin="130,70,131,0" Grid.RowSpan="2">
                 <TextBlock  Text="¿Olvidó su nombre de usuario o contraseña?"  Foreground="White"  TextDecorations="Underline" FontSize="10" FontWeight="Normal" HorizontalAlignment="Center" Width="201" />
             </Button>

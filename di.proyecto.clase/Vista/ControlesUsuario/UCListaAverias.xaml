@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="810">
     <DockPanel>
         <Grid DockPanel.Dock="Top" Background="DarkGray" Height="70">
             <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
               ToolTip="Reset" >
                 <material:PackIcon Kind="Refresh" Height="24" Width="24" />
             </Button>
-            <Button  x:Name="btnFactura" Margin="10,0,0,0" Click="BtnFactura_Click"  Grid.Column="5"
+            <Button  x:Name="btnFactura" Margin="10,0" Click="BtnFactura_Click"  Grid.Column="5"
               Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FF616161" Foreground="White"
               ToolTip="Generar Factura" >
                 <material:PackIcon Kind="Receipt" Height="24" Width="24" />
@@ -56,8 +56,7 @@
 
             <DataGrid x:Name="dgListaAverias" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaAverias}">
                 <DataGrid.Columns>
-
-                    <DataGridTextColumn Header="Fecha entrada" Binding="{Binding fechaRecepcion,StringFormat=d}"  />
+                    <DataGridTextColumn Header="Fecha entrada" Binding="{Binding fechaRecepcion,StringFormat=dd/MM/yyyy}"  />
                     <DataGridTextColumn Header="Cliente" Binding="{Binding cliente.nombre}" />
                     <DataGridTextColumn Header="Matricula Vehiculo" Binding="{Binding cliente.vehiculo.matricula}" />
                     <DataGridTextColumn Header="Empleado" Binding="{Binding empleado.nombre}"  />
@@ -65,7 +64,6 @@
                     <DataGridTextColumn Header="Estado" Binding="{Binding estado1.nombre}"  />
                     <DataGridTextColumn Header="IVA" Binding="{Binding IVA}"  />
                     <DataGridTextColumn Header="Solucion" Binding="{Binding solucion}"  />
-
                 </DataGrid.Columns>
 
             </DataGrid>

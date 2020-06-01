@@ -29,7 +29,7 @@
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button Content="Ajustes" x:Name="Ajustes" />
-                        <Button Content="Cuenta" x:Name="Cuenta" />
+                        <Button Content="Cambiar &#xa;Contraseña" x:Name="CambiarContra" Click="CambiarContra_Click" />
                         <Button Content="Ayuda"  x:Name="Ayuda"/>
                         <Separator/>
                         <Button Content="Desconectar" x:Name="Desconectar" Click="Desconectar_Click"/>

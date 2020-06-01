@@ -10,6 +10,8 @@ namespace di.proyecto.clase.Cache
     {
         public static string User { get; set; }
         public static int Rol { get; set; }
+        public static string Password { get; set; }
+        public static string PasswordNueva { get; set; }
 
     }
 }

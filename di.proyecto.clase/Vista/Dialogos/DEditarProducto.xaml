@@ -6,7 +6,7 @@
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
         mc:Ignorable="d"
-        Title="Añadir producto"  SizeToContent="WidthAndHeight">
+        Title="Editar producto"  SizeToContent="WidthAndHeight">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
