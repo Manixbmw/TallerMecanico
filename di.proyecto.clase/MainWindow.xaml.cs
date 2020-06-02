@@ -33,9 +33,7 @@ namespace di.proyecto.clase
             InitializeComponent();
             tallerEnt = ent;
 
-            int rol = UserLoginCache.Rol;
-
-            
+            int rol = UserLoginCache.Rol;            
 
             var menuVehiculos = new List<SubItem>();
             var item1 = new ItemMenu("Vehiculos", menuVehiculos, PackIconKind.Car);

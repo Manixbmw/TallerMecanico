@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <material:Card  Background="#40080C" Padding="10" FontSize="20" Grid.ColumnSpan="2">
+        <material:Card  Background="#1b1b1b" Padding="10" FontSize="20" Grid.ColumnSpan="2">
             <TextBlock Text="Añadir empleado" Foreground="White"
                        HorizontalAlignment="Center" FontWeight="Bold"/>
         </material:Card>
@@ -109,13 +109,13 @@
          />
 
         <Button x:Name="btnCancelar" Click="BtnCancelar_Click" Margin="20" IsDefault="True" Content="Cancelar" IsCancel="True"
-                    Grid.Row="10" Grid.Column="0" HorizontalAlignment="Left"  Foreground="White" Background="#40080C">
+                    Grid.Row="10" Grid.Column="0" HorizontalAlignment="Left"  Foreground="White" Background="#b71c1c" BorderBrush="{x:Null}">
 
         </Button>
         <Button x:Name="btnGuardarEmpleado" Content="Guardar" Click="BtnGuardarEmpleado_Click"  Margin="20" 
                 
                 IsDefault="True" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Right" IsCancel="True"
-                Foreground="White" Background="#40080C" >
+                Foreground="White" Background="#b71c1c" BorderBrush="{x:Null}" >
         </Button>
     </Grid>
 </Window>

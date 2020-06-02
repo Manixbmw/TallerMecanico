@@ -22,7 +22,10 @@
         </Grid>
         <Grid >
 
-            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaVehiculos}">
+            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False" AlternatingRowBackground="#6d6d6d" CanUserAddRows="False"  
+                       GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Background="#424242" 
+                      ItemsSource="{Binding listaVehiculos}" >             
+
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"  />
@@ -33,7 +36,7 @@
                     <DataGridTextColumn Header="Fecha de Matriculacion" Binding="{Binding FechaMatriculacion}"  />
                     <DataGridTextColumn Header="Kilometros" Binding="{Binding Km}"  />
 
-                </DataGrid.Columns>
+                </DataGrid.Columns>                
 
             </DataGrid>
 

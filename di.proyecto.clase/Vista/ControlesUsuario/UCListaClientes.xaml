@@ -19,9 +19,13 @@
             </Grid.RowDefinitions>
             <TextBlock Text="LISTA DE CLIENTES" FontSize="20" Margin="20" Foreground="White" FontWeight="Bold"></TextBlock>
         </Grid>
-        <Grid Background="#7f0000">
-            <DataGrid x:Name="dgListaClientes"  AutoGenerateColumns="False" AlternatingRowBackground="#f05545" CanUserAddRows="False" ItemsSource="{Binding listaClientes}"
-                       GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Background="#7f0000" >
+        <Grid >
+            <DataGrid x:Name="dgListaClientes"  AutoGenerateColumns="False" AlternatingRowBackground="#6d6d6d" CanUserAddRows="False" 
+                       GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Background="#424242"  
+                      ItemsSource="{Binding listaClientes}">
+
+                
+
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"  />

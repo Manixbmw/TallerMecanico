@@ -1,5 +1,6 @@
 ﻿using di.proyecto.clase.Modelo;
 using di.proyecto.clase.MVVM;
+using di.proyecto.clase.Vista.Dialogos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,7 +115,9 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
 
         private void BtnFactura_Click(object sender, RoutedEventArgs e)
         {
-
+            Factura diag = new Factura(tallerEnt);
+            diag.ShowDialog();
+            
         }
     }
 }

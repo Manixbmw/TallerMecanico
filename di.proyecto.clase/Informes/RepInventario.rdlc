@@ -77,7 +77,7 @@
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup">
+                  <Group Name="Tipo">
                     <GroupExpressions>
                       <GroupExpression>=Fields!tipo.Value</GroupExpression>
                     </GroupExpressions>
@@ -108,7 +108,7 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
-                          <FontSize>11pt</FontSize>
+                          <FontSize>12pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                           <Color>White</Color>
                         </Style>
@@ -118,7 +118,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Width>1.5pt</Width>
+                          <Width>2pt</Width>
                         </Border>
                       </Style>
                       <ChartMarker>
@@ -391,7 +391,7 @@
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>8pt</FontSize>
                 </Style>
-                <DockOutsideChartArea>true</DockOutsideChartArea>
+                <DockToChartArea>Default</DockToChartArea>
                 <ChartLegendTitle>
                   <Caption />
                   <Style>
@@ -406,7 +406,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Título del gráfico</Caption>
+                <Caption>Grafico productos</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -438,8 +438,8 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.17639cm</Top>
             <Left>0.28787cm</Left>
-            <Height>7.86632cm</Height>
-            <Width>16.41646cm</Width>
+            <Height>9.17215cm</Height>
+            <Width>18.26917cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -478,7 +478,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>nombre</Value>
+                                  <Value>Nombre</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -515,7 +515,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>cantidad</Value>
+                                  <Value>Cantidad</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -552,7 +552,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>precio</Value>
+                                  <Value>Precio</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1017,7 +1017,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>tipo</Value>
+                                <Value>Tipo</Value>
                                 <Style>
                                   <FontSize>12pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
@@ -1107,7 +1107,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>8.14854cm</Top>
+            <Top>9.34854cm</Top>
             <Left>0.28787cm</Left>
             <Height>2.4cm</Height>
             <Width>12.5cm</Width>
@@ -1119,7 +1119,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>4.17051in</Height>
+        <Height>5.09416in</Height>
         <Style />
       </Body>
       <Width>7.30592in</Width>

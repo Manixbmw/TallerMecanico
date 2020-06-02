@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
-        <material:Card  Background="{DynamicResource MaterialDesignPaper}"  Padding="10" Grid.ColumnSpan="3">
+        <material:Card  Background="#1b1b1b"  Padding="10" Grid.ColumnSpan="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="500"/>

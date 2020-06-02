@@ -125,6 +125,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Cache\UserLoginCache.cs" />
+    <Compile Include="Informes\DataSetAverias.cs">
+      <DependentUpon>DataSetAverias.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Informes\DataSetAverias.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,6 +279,9 @@
     <Compile Include="Validacion\ValidarErrores.cs" />
     <Compile Include="ViewModel\ItemMenu.cs" />
     <Compile Include="ViewModel\SubItem.cs" />
+    <Compile Include="Vista\Dialogos\Factura.xaml.cs">
+      <DependentUpon>Factura.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ControlesUsuario\InformeInventario.xaml.cs">
       <DependentUpon>InformeInventario.xaml</DependentUpon>
     </Compile>
@@ -342,9 +348,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Recursos\Estilos\Estilos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlMenuItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Dialogos\Factura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ControlesUsuario\InformeInventario.xaml">
       <SubType>Designer</SubType>
@@ -457,9 +471,8 @@
     <Resource Include="Recursos\Iconos\twitter.png" />
     <Resource Include="Recursos\Iconos\windows.png" />
     <Resource Include="Recursos\Iconos\google.png" />
-    <EmbeddedResource Include="Informes\Report1.rdlc" />
     <EmbeddedResource Include="Informes\RepInventario.rdlc" />
-    <EmbeddedResource Include="Informes\ReportInventario.rdlc" />
+    <EmbeddedResource Include="Informes\RFactura.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -535,6 +548,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\di.proyecto.clase.Modelo.piezas_averia.datasource" />
     <None Include="Properties\DataSources\di.proyecto.clase.Modelo.productos.datasource" />
     <None Include="Properties\DataSources\di.proyecto.clase.Modelo.proveedor.datasource" />
     <None Include="Properties\DataSources\di.proyecto.clase.Modelo.tipoproducto.datasource" />
@@ -549,9 +563,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Recursos\Estilos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

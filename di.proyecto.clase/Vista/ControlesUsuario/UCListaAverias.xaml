@@ -36,25 +36,28 @@
                 <DatePicker   Name="FechaFin"  Width="120"   Margin="5" material:HintAssist.Hint="Selecciona fecha"    />
             </StackPanel>
             <Button    x:Name="btnFiltrarFechas" Style="{StaticResource MaterialDesignFlatDarkBgButton}"  Click="BtnFiltrarFechas_Click"   
-                        ToolTip="Filtrar Fechas"  Grid.Column="3" Margin="30,0,0,0" BorderBrush="White" >
+                        ToolTip="Filtrar Fechas"  Grid.Column="3" Margin="30,0,0,0" BorderBrush="{x:Null}"  Background="#b71c1c" >
                 Filtrar
             </Button>
 
             <Button  x:Name="btnReset" Margin="10,0,0,0" Click="BtnReset_Click"  Grid.Column="4"
-              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FF616161" Foreground="White"
-              ToolTip="Reset" >
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#b71c1c" Foreground="White"
+              ToolTip="Reset" BorderBrush="{x:Null}" >
                 <material:PackIcon Kind="Refresh" Height="24" Width="24" />
             </Button>
             <Button  x:Name="btnFactura" Margin="10,0" Click="BtnFactura_Click"  Grid.Column="5"
-              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FF616161" Foreground="White"
-              ToolTip="Generar Factura" >
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#b71c1c" Foreground="White"
+              ToolTip="Generar Factura"  BorderBrush="{x:Null}">
                 <material:PackIcon Kind="Receipt" Height="24" Width="24" />
             </Button>
 
         </Grid>
         <Grid >
 
-            <DataGrid x:Name="dgListaAverias" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaAverias}">
+            <DataGrid x:Name="dgListaAverias"  AutoGenerateColumns="False" AlternatingRowBackground="#6d6d6d" CanUserAddRows="False" 
+                       GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Background="#424242"    
+                      
+                      ItemsSource="{Binding listaAverias}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Fecha entrada" Binding="{Binding fechaRecepcion,StringFormat=dd/MM/yyyy}"  />
                     <DataGridTextColumn Header="Cliente" Binding="{Binding cliente.nombre}" />

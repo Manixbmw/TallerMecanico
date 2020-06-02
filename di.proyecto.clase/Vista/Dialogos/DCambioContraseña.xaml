@@ -6,15 +6,14 @@
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
         mc:Ignorable="d"
-        Title="Cambio de contraseña" Height="537" Width="389">
+        Title="Cambio de contraseña" Height="432" Width="389">
     <Grid Background="#424242">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>           
             <RowDefinition Height="90"/>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Cambio de contraseña" Style="{StaticResource MaterialDesignHeadline3TextBlock}" Foreground="White"
@@ -34,8 +33,6 @@
                     Height="50" ToolTip="Cambiar"  Grid.Row="4" BorderBrush="{x:Null}">
             <TextBlock Text="Cambiar contraseña" FontSize="24" />
         </Button>
-        <TextBox    Text="{Binding Password}"  Grid.Row="5"  
-                   x:Name="prueba" 
-                    FontSize="35"/>
+        
     </Grid>
 </Window>

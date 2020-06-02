@@ -38,7 +38,7 @@
                                 <Separator VerticalAlignment="Bottom"></Separator>
                             </Grid>
                             <Grid >
-                                <DataGrid ItemsSource="{Binding albaran}" AutoGenerateColumns="False" Background="IndianRed" GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
+                                <DataGrid ItemsSource="{Binding albaran}" AutoGenerateColumns="False" Background="#f05545" GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Producto" Binding="{Binding productos.nombre}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}"></DataGridTextColumn>

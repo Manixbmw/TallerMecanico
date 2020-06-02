@@ -1,0 +1,18 @@
+﻿<Window x:Class="di.proyecto.clase.Vista.Dialogos.Factura"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
+             xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+             mc:Ignorable="d" 
+            Height="auto"  d:DesignWidth="840">
+    <DockPanel>
+
+        <Grid>
+            <WindowsFormsHost x:Name="Informe" Margin="10" Width="800">
+                <rv:ReportViewer x:Name="reporFactura"   />
+            </WindowsFormsHost>
+        </Grid>
+    </DockPanel>
+</Window>

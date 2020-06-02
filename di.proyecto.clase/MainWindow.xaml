@@ -29,7 +29,7 @@
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button Content="Ajustes" x:Name="Ajustes" />
-                        <Button Content="Cambiar &#xa;Contraseña" x:Name="CambiarContra" Click="CambiarContra_Click" />
+                        <Button Content="Cambiar &#xa;contraseña" x:Name="CambiarContra" Click="CambiarContra_Click" />
                         <Button Content="Ayuda"  x:Name="Ayuda"/>
                         <Separator/>
                         <Button Content="Desconectar" x:Name="Desconectar" Click="Desconectar_Click"/>
@@ -37,7 +37,7 @@
                 </materialDesign:PopupBox>
             </Grid>
         </materialDesign:ColorZone >
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#E5303030">
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#E5B71C1C">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="326*"/>
@@ -46,7 +46,7 @@
                 <Image Source="Recursos/Logos/Logo.png"/>
             </Grid>
             <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <StackPanel x:Name="Menu" Margin="10"/>
+                <StackPanel x:Name="Menu" Margin="10,0,0,0"/>
             </ScrollViewer>
         </Grid >
 
