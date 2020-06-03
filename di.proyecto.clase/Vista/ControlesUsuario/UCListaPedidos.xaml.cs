@@ -32,5 +32,43 @@ namespace di.proyecto.clase.Vista.ControlesUsuario
             mvAlbaran = new MVAlbaran(tallerEnt);
             DataContext = mvAlbaran;
         }
+
+        
+
+        private void BtnReset_Click(object sender, RoutedEventArgs e)
+        {
+            dgListaPedidos.Items.Filter = null;
+            dgListaPedidos.Items.Refresh();
+        }
+
+        private void BtnAnyadirPro_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgListaPedidos.SelectedItem != null)
+            {
+                
+                if (dgListaPedidos.SelectedItem is pedidos)
+                {
+
+                    if (!(MessageBox.Show("Quieres añadirlo?", "Porfavor confirma.", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                    {
+                        // Cancel Delete.              
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        //Añadimos los productos al stock y lo borramos de la tabla albaran
+                        mvAlbaran.pedidoSeleccionado = (pedidos)dgListaPedidos.SelectedItem;
+                        //mvAlbaran.guarda();
+                        mvAlbaran.borrarPedido();
+                        MessageBox.Show("Todo correcto");
+                    }
+                    dgListaPedidos.Items.Refresh();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto antes de añadirlo", "GESTIÓN PRODUCTOS", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

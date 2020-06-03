@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:di.proyecto.clase.Vista.ControlesUsuario"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -18,11 +19,24 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Text="LISTA DE PEDIDOS" FontSize="20" Margin="20" Foreground="White" FontWeight="Bold"></TextBlock>
+            <StackPanel  Orientation="Horizontal" Grid.Row="0" Grid.Column="3" Margin="50,0,30,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                
+                <Button  x:Name="btnAnyadirPro" Click="BtnAnyadirPro_Click"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FFB71C1C" Foreground="White"
+              ToolTip="Añadir" BorderBrush="{x:Null}" >
+                    <material:PackIcon Kind="CheckBold" Height="24" Width="24" />
+                </Button>
+                <Button  x:Name="btnReset" Margin="10,0,0,0" Click="BtnReset_Click"
+              Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#FFB71C1C" Foreground="White"
+              ToolTip="Reset" BorderBrush="{x:Null}" >
+                    <material:PackIcon Kind="Refresh" Height="24" Width="24" />
+                </Button>
 
+            </StackPanel >
         </Grid>
         <Grid >
 
-            <DataGrid x:Name="dgListaModelos" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaPedidos}">
+            <DataGrid x:Name="dgListaPedidos" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" CanUserAddRows="False" ItemsSource="{Binding listaPedidos}">
                 <DataGrid.Columns>                    
                     <DataGridTextColumn Header="Id" Binding="{Binding id}" />
                     <DataGridTextColumn Header="Fecha" Binding="{Binding fecha,StringFormat=d}" Width="100" />
@@ -38,8 +52,10 @@
                                 <Separator VerticalAlignment="Bottom"></Separator>
                             </Grid>
                             <Grid >
-                                <DataGrid ItemsSource="{Binding albaran}" AutoGenerateColumns="False" Background="#f05545" GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
+                                <DataGrid  ItemsSource="{Binding albaran}" AutoGenerateColumns="False" Background="#f05545" CanUserAddRows="False" 
+                                           GridLinesVisibility="All" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
                                     <DataGrid.Columns>
+                                        
                                         <DataGridTextColumn Header="Producto" Binding="{Binding productos.nombre}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="Precio" Binding="{Binding productos.precio ,StringFormat={}{0:N2}€}"></DataGridTextColumn>

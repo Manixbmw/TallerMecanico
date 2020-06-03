@@ -57,7 +57,7 @@ namespace di.proyecto.clase
             menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaPedidos(ent)));           
             //menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
             menuGestion.Add(new SubItem("Informe",new InformeInventario(ent)));
-            menuGestion.Add(new SubItem("Movimiento de Productos"));
+           
            
 
             var menuEmpleados = new List<SubItem>();
