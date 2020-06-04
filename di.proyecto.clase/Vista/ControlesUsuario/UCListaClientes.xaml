@@ -44,7 +44,7 @@
                     </DataGridTemplateColumn>                    
                     <DataGridTextColumn Header="Email" Binding="{Binding email}"  />
                     <DataGridTextColumn Header="DNI" Binding="{Binding dni}"  />
-                    <DataGridTextColumn Header="Telefono" Binding="{Binding telefono}"  />
+                    <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"  />
                 </DataGrid.Columns>
 
                 <DataGrid.RowDetailsTemplate>

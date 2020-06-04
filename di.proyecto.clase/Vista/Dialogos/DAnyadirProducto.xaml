@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
         mc:Ignorable="d"
         Title="Añadir producto"  SizeToContent="WidthAndHeight">
-    <Grid Background="DarkGray">
+    <Grid Background="#424242">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -25,31 +25,31 @@
         </material:Card>
         <TextBox  x:Name="txNombre" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                   Text="{Binding productoNuevo.nombre,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="Nombre" Margin="10" MaxLength="45" />
+                 material:HintAssist.Hint="Nombre" Margin="10" MaxLength="45" Foreground="White" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
             <TextBox  x:Name="txPrecio"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       PreviewTextInput="NumberValidationTextBox"
                       Text="{Binding productoNuevo.precio,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="Precio" Margin="10" />
+                 material:HintAssist.Hint="Precio" Margin="10" Foreground="White" />
 
             <TextBox  x:Name="txCantidad"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       PreviewTextInput="NumberValidationTextBox"
                       Text="{Binding productoNuevo.cantidad,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="Cantidad" Margin="20,10,10,10" />
+                 material:HintAssist.Hint="Cantidad" Margin="20,10,10,10" Foreground="White" />
         </StackPanel>
 
         <ComboBox x:Name="comboTipo" ItemsSource="{Binding listaTipos}"  DisplayMemberPath="nombre"
                    SelectedItem="{Binding productoNuevo.tipoproducto, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                  material:HintAssist.Hint="Selecciona un tipo de producto" Grid.Row="2" Grid.Column="0" Margin="10"></ComboBox>
+                  material:HintAssist.Hint="Selecciona un tipo de producto" Grid.Row="2" Grid.Column="0" Margin="10" Foreground="White"></ComboBox>
 
         <ComboBox x:Name="comboProveedor" ItemsSource="{Binding listaProveedor}"  DisplayMemberPath="nombre" 
                   SelectedItem="{Binding productoNuevo.proveedor, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                  material:HintAssist.Hint="Selecciona un proveedor" Grid.Row="2" Grid.Column="1" Margin="10"></ComboBox>
+                  material:HintAssist.Hint="Selecciona un proveedor" Grid.Row="2" Grid.Column="1" Margin="10" Foreground="White"></ComboBox>
 
         <TextBox x:Name="txdescripcion" material:HintAssist.Hint="Descripción"  
                  Text="{Binding productoNuevo.descripcion,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 Grid.ColumnSpan="2" Grid.Row="3" Height="60" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                 Grid.ColumnSpan="2" Grid.Row="3" Height="60" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="White"></TextBox>
 
         <Button x:Name="btnCancelar" Click="BtnCancelar_Click" Margin="20" IsDefault="True" Content="Cancelar" IsCancel="True"
                     Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left"  Foreground="White" Background="#b71c1c" BorderBrush="{x:Null}">

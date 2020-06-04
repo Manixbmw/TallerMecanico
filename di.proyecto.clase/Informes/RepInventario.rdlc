@@ -406,7 +406,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Grafico productos</Caption>
+                <Caption>Gráfico productos</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -439,7 +439,7 @@
             <Top>0.17639cm</Top>
             <Left>0.28787cm</Left>
             <Height>9.17215cm</Height>
-            <Width>18.26917cm</Width>
+            <Width>17.50188cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -453,16 +453,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>5.49105cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.12958cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.65333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.89688cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -817,7 +817,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!precio.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>0.00'€';(0.00'€')</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -833,27 +835,28 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-ES</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="proveedor">
+                        <Textbox Name="idProveedor">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!proveedor.Value</Value>
+                                  <Value>=Fields!idProveedor.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>proveedor</rd:DefaultName>
+                          <rd:DefaultName>idProveedor</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1110,7 +1113,7 @@
             <Top>9.34854cm</Top>
             <Left>0.28787cm</Left>
             <Height>2.4cm</Height>
-            <Width>12.5cm</Width>
+            <Width>14.67084cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>

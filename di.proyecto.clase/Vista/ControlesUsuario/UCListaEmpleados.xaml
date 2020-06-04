@@ -75,7 +75,7 @@
                     <DataGridTextColumn Header="Email" Binding="{Binding email}" />
                     <DataGridTextColumn Header="Usuario" Binding="{Binding usuario }" />
                     <DataGridTextColumn Header="Password" Binding="{Binding password}" />
-                    <DataGridTextColumn Header="Telefono" Binding="{Binding telefono}" />
+                    <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}" />
 
                     
 

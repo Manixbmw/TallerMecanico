@@ -29,7 +29,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
-                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Vehiculo Nuevo" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Vehículo Nuevo" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
                 <StackPanel Grid.Column="1" Margin="0,0,0,50">
                     <Button    HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}"
                                x:Name="btnGuardarVehiculo" Click="BtnGuardarVehiculo_Click"
@@ -46,7 +46,7 @@
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1" MaxLength="20"
                   Text="{Binding vehiculoNuevo.matricula,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
                   x:Name="txtMatricula" Foreground="{DynamicResource MaterialDesignPaper}" FontSize="20"  PreviewTextInput="NumberValidationTextBox"
-                  material:HintAssist.Hint="Matricula" Margin="20" 
+                  material:HintAssist.Hint="Matrícula" Margin="20" 
                   material:HintAssist.HelperText="000-00-0000"
          />
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="1" Grid.Column="1" MaxLength="20"
@@ -65,7 +65,7 @@
                   material:HintAssist.Hint="Color" Margin="20" FontSize="20"
          />
         <DatePicker  Grid.Row="3" x:Name="dateFechaMatri" Foreground="{DynamicResource MaterialDesignPaper}"
-                 material:HintAssist.Hint="Fecha de Matriculacion" Margin="20,45,20,20" FontSize="20"  />
+                 material:HintAssist.Hint="Fecha de Matriculación" Margin="20,45,20,20" FontSize="20"  />
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="3" Grid.Column="1" MaxLength="20"
                   x:Name="txtKm" Foreground="{DynamicResource MaterialDesignPaper}"

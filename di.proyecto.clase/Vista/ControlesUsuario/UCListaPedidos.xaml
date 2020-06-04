@@ -40,7 +40,7 @@
                 <DataGrid.Columns>                    
                     <DataGridTextColumn Header="Id" Binding="{Binding id}" />
                     <DataGridTextColumn Header="Fecha" Binding="{Binding fecha,StringFormat=d}" Width="100" />
-                    <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}"  />      
+                    <DataGridTextColumn Header="Descripción" Binding="{Binding descripcion}"  />      
 
                 </DataGrid.Columns>
                 <DataGrid.RowDetailsTemplate >

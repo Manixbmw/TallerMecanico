@@ -36,7 +36,7 @@ namespace di.proyecto.clase
             int rol = UserLoginCache.Rol;            
 
             var menuVehiculos = new List<SubItem>();
-            var item1 = new ItemMenu("Vehiculos", menuVehiculos, PackIconKind.Car);
+            var item1 = new ItemMenu("Vehículos", menuVehiculos, PackIconKind.Car);
             menuVehiculos.Add(new SubItem("Nuevo", new UCVehiculoNuevo(ent)));            
             menuVehiculos.Add(new SubItem("Lista", new UCListaVehiculos(ent)));
 
@@ -46,14 +46,14 @@ namespace di.proyecto.clase
             menuCliente.Add(new SubItem("Lista", new UCListaClientes(ent)));
 
             var menuAverias = new List<SubItem>();
-            var item3 = new ItemMenu("Averias", menuAverias, PackIconKind.Schedule);
+            var item3 = new ItemMenu("Averías", menuAverias, PackIconKind.Cog);
             menuAverias.Add(new SubItem("Nueva", new UCAveriaNueva(ent)));
-            menuAverias.Add(new SubItem("Gestion", new UCArbolAverias(ent)));
+            menuAverias.Add(new SubItem("Gestión", new UCArbolAverias(ent)));
             menuAverias.Add(new SubItem("Lista", new UCListaAverias(ent)));
-            menuAverias.Add(new SubItem("Graficos", new GraficosReparaciones(ent)));
+            menuAverias.Add(new SubItem("Gráficos", new GraficosReparaciones(ent)));
 
             var menuGestion = new List<SubItem>();
-            var item4 = new ItemMenu("Gestion de Stock", menuGestion, PackIconKind.FileReport);
+            var item4 = new ItemMenu("Gestión de Stock", menuGestion, PackIconKind.FileReport);
             menuGestion.Add(new SubItem("Nuevo Pedido",new UCListaPedidos(ent)));           
             //menuGestion.Add(new SubItem("Inventario",new UCListaProductos(ent)));
             menuGestion.Add(new SubItem("Informe",new InformeInventario(ent)));
@@ -61,7 +61,7 @@ namespace di.proyecto.clase
            
 
             var menuEmpleados = new List<SubItem>();
-            var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.ScaleBalance);
+            var item5 = new ItemMenu("Empleados", menuEmpleados, PackIconKind.AccountMultiple);
             //menuEmpleados.Add(new SubItem("Gestion",new UCListaEmpleados(ent)));           
 
             

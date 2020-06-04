@@ -29,11 +29,11 @@
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"  />
-                    <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" />
+                    <DataGridTextColumn Header="Matrícula" Binding="{Binding matricula}" />
                     <DataGridTextColumn Header="Marca" Binding="{Binding marca}"  />
                     <DataGridTextColumn Header="Modelo" Binding="{Binding modelo}"  />
                     <DataGridTextColumn Header="Color" Binding="{Binding color}"  />
-                    <DataGridTextColumn Header="Fecha de Matriculacion" Binding="{Binding FechaMatriculacion}"  />
+                    <DataGridTextColumn Header="Fecha de Matriculación" Binding="{Binding FechaMatriculacion}"  />
                     <DataGridTextColumn Header="Kilometros" Binding="{Binding Km}"  />
 
                 </DataGrid.Columns>                

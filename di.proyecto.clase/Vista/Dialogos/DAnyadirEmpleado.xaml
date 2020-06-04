@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:di.proyecto.clase.Vista.Dialogos"
         mc:Ignorable="d"
          Title="Añadir empleado"  SizeToContent="WidthAndHeight">
-    <Grid Background="DarkGray">
+    <Grid Background="#424242">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -31,80 +31,80 @@
         </material:Card>
         <TextBox  x:Name="txNombre" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                   Text="{Binding empleadoNuevo.nombre,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="Nombre" Margin="10" MaxLength="45" VerticalAlignment="Center" />
+                 material:HintAssist.Hint="Nombre" Margin="10" MaxLength="45" VerticalAlignment="Center" Foreground="White" />
 
         <TextBox  x:Name="txApellido"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                        Grid.Row="1" Grid.Column="1"
                       Text="{Binding empleadoNuevo.apellido1,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="Apellido" Margin="10" />
+                 material:HintAssist.Hint="Apellido" Margin="10" Foreground="White" />
 
         <TextBox  x:Name="txApellido2"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       Grid.Row="2" Grid.Column="1"
                       Text="{Binding empleadoNuevo.apellido2,NotifyOnValidationError=True ,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 material:HintAssist.Hint="2º Apellido" Margin="10" />
+                 material:HintAssist.Hint="2º Apellido" Margin="10" Foreground="White" />
 
         <ComboBox x:Name="comboRol" ItemsSource="{Binding listaRol}"  DisplayMemberPath="nombre"
                    SelectedItem="{Binding empleadoNuevo.rol1, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                  material:HintAssist.Hint="Selecciona el Rol " Grid.Row="2" Grid.Column="0" Margin="10,25,10,10"></ComboBox>
+                  material:HintAssist.Hint="Selecciona el Rol " Grid.Row="2" Grid.Column="0" Margin="10,25,10,10" Foreground="White"></ComboBox>
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="3" Grid.Column="0" MaxLength="20"
                    Text="{Binding empleadoNuevo.dni,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtDni" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtDni" Foreground="White"
                   material:HintAssist.Hint="DNI" Margin="10"
          />
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="3" Grid.Column="1" MaxLength="20"
                    Text="{Binding empleadoNuevo.telefono,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtTfn" Foreground="{DynamicResource MaterialDesignPaper}"  PreviewTextInput="NumberValidationTextBox"
-                  material:HintAssist.Hint="Telefono" Margin="10"
+                  x:Name="txtTfn" Foreground="White"  PreviewTextInput="NumberValidationTextBox"
+                  material:HintAssist.Hint="Teléfono" Margin="10"
          />
 
-        <TextBlock Text="Login" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource MaterialDesignPaper}"                   
+        <TextBlock Text="Login" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"                   
                  Grid.Row="4" Grid.Column="0" Margin="20" />
 
         <Separator  Grid.Row="4" Grid.ColumnSpan="2" Margin="130,2,0,2" BorderBrush="Black" BorderThickness="1"  />
-        
+
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="5" Grid.Column="0" MaxLength="20"
                    Text="{Binding empleadoNuevo.email,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtEmail" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtEmail" Foreground="White"
                   material:HintAssist.Hint="Email" Margin="10"
          />
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="6" Grid.Column="0" MaxLength="20"
                    Text="{Binding empleadoNuevo.usuario,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtUsu" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtUsu" Foreground="White"
                   material:HintAssist.Hint="Usuario" Margin="10"
          />
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="6" Grid.Column="1" MaxLength="20"
                    Text="{Binding empleadoNuevo.password,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtPass" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtPass" Foreground="White"
                   material:HintAssist.Hint="Password" Margin="10"
          />
 
-        <TextBlock Text="Direccion" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource MaterialDesignPaper}"                   
+        <TextBlock Text="Direccion" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"                   
                  Grid.Row="7" Grid.Column="0" Margin="20" />
 
         <Separator  Grid.Row="7" Grid.ColumnSpan="2" Margin="130,2,0,2" BorderBrush="Black" BorderThickness="1"  />
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="8" Grid.Column="0" MaxLength="20"
                    Text="{Binding empleadoNuevo.calle,ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                  x:Name="txtCalle" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtCalle" Foreground="White"
                   material:HintAssist.Hint="Calle" Margin="10"
          />
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="8" Grid.Column="1" MaxLength="20"
                   Text="{Binding empleadoNuevo.poblacion}"
-                  x:Name="txtPoblacion" Foreground="{DynamicResource MaterialDesignPaper}"
-                  material:HintAssist.Hint="Poblacion" Margin="10"
+                  x:Name="txtPoblacion" Foreground="White"
+                  material:HintAssist.Hint="Población" Margin="10"
          />
 
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="9" Grid.Column="0" MaxLength="20"
-                  x:Name="txtCP" Foreground="{DynamicResource MaterialDesignPaper}" Margin="10"
+                  x:Name="txtCP" Foreground="White" Margin="10"
                   Text="{Binding empleadoNuevo.CP}"  PreviewTextInput="NumberValidationTextBox"
                   material:HintAssist.Hint="CP" 
                   material:HintAssist.HelperText="00000"
          />
         <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Grid.Row="9" Grid.Column="1" MaxLength="20"
                   Text="{Binding empleadoNuevo.provincia}" Margin="10"
-                  x:Name="txtProvincia" Foreground="{DynamicResource MaterialDesignPaper}"
+                  x:Name="txtProvincia" Foreground="White"
                   material:HintAssist.Hint="Provincia" 
          />
 

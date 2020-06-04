@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:di.proyecto.clase"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MECHANICS" Height="650" Width="1500"  >
+        Title="MECHANIC'S" Height="650" Width="1500"  >
     <Window.Background>
         <ImageBrush/>
     </Window.Background>
@@ -43,7 +43,7 @@
                 <RowDefinition Height="326*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="GhostWhite"  >
-                <Image Source="Recursos/Logos/Logo.png"/>
+                <Image Source="Recursos/Logos/Logo.png" Margin="0,5"/>
             </Grid>
             <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
                 <StackPanel x:Name="Menu" Margin="10,0,0,0"/>

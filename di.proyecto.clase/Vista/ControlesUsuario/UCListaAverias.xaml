@@ -25,7 +25,7 @@
             <TextBlock Text="LISTA DE AVERIAS" FontSize="20" Margin="20" Foreground="Black" FontWeight="Bold"></TextBlock>
             <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1,2,22,2" Width="198" >
 
-                <ComboBox x:Name="comboFiltroTipo" SelectionChanged="ComboFiltroTipo_SelectionChanged" IsEditable="True"  Text="Selecciona un tipo Averia"
+                <ComboBox x:Name="comboFiltroTipo" SelectionChanged="ComboFiltroTipo_SelectionChanged" IsEditable="True"  Text="Selecciona un tipo Avería"
                       Width="200"  Margin="10,5,10,0" ItemsSource="{Binding listaTipo}" DisplayMemberPath="nombre" SelectedItem="{Binding tipoSeleccionado}"/>
 
                 <ComboBox x:Name="comboFiltroEstado" SelectionChanged="ComboFiltroEstado_SelectionChanged" IsEditable="True"  Text="Selecciona un Estado"
@@ -61,12 +61,12 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Fecha entrada" Binding="{Binding fechaRecepcion,StringFormat=dd/MM/yyyy}"  />
                     <DataGridTextColumn Header="Cliente" Binding="{Binding cliente.nombre}" />
-                    <DataGridTextColumn Header="Matricula Vehiculo" Binding="{Binding cliente.vehiculo.matricula}" />
+                    <DataGridTextColumn Header="Matricula Vehículo" Binding="{Binding cliente.vehiculo.matricula}" />
                     <DataGridTextColumn Header="Empleado" Binding="{Binding empleado.nombre}"  />
-                    <DataGridTextColumn Header="Tipo de averia" Binding="{Binding tipoaveria.nombre}"  />
+                    <DataGridTextColumn Header="Tipo de avería" Binding="{Binding tipoaveria.nombre}"  />
                     <DataGridTextColumn Header="Estado" Binding="{Binding estado1.nombre}"  />
                     <DataGridTextColumn Header="IVA" Binding="{Binding IVA}"  />
-                    <DataGridTextColumn Header="Solucion" Binding="{Binding solucion}"  />
+                    <DataGridTextColumn Header="Solución" Binding="{Binding solucion}"  />
                 </DataGrid.Columns>
 
             </DataGrid>
